@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習成果 分析ダッシュボード</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif; }
+        .file-drop-area { transition: all 0.2s ease; }
+        .file-drop-area.dragover { background-color: #e0f2fe; border-color: #3b82f6; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6 md:p-10 min-h-screen">
+
+    <div class="max-w-6xl mx-auto space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-md flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-sky-800">学習成果 分析ダッシュボード</h1>
+                <p class="text-sm text-gray-500 mt-1">生徒から回収したJSONファイルを複数選択、またはドラッグ＆ドロップして解析します。</p>
+            </div>
+            <button id="export-csv-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg shadow transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                CSVを出力
+            </button>
+        </div>
+
+        <div id="drop-zone" class="file-drop-area border-4 border-dashed border-gray-300 rounded-xl p-10 bg-white text-center cursor-pointer hover:bg-gray-50 flex flex-col items-center justify-center">
+            <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+            <p class="text-lg font-medium text-gray-600 mb-2">JSONファイルをここにドラッグ＆ドロップ</p>
+            <p class="text-sm text-gray-400 mb-4">または</p>
+            <label class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg cursor-pointer transition-colors">
+                ファイルを選択
+                <input type="file" id="file-input" multiple accept=".json" class="hidden">
+            </label>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md lg:col-span-1 hidden" id="chart-container">
+                <h2 class="text-lg font-bold text-gray-700 mb-4">正答率の分布</h2>
+                <canvas id="scoreChart"></canvas>
+                <div class="mt-4 text-sm text-gray-600" id="summary-stats"></div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md lg:col-span-2 hidden" id="table-container">
+                <h2 class="text-lg font-bold text-gray-700 mb-4">解析結果一覧 (<span id="student-count">0</span>名)</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse whitespace-nowrap">
+                        <thead>
+                            <tr class="bg-sky-50 text-sky-800 border-b-2 border-sky-200">
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100" onclick="app.sortTable('class')">クラス ↕</th>
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100" onclick="app.sortTable('id')">番号 ↕</th>
+                                <th class="p-3 font-semibold">名前</th>
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100" onclick="app.sortTable('date')">実施日 ↕</th>
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100 text-right" onclick="app.sortTable('achievement')">達成率 ↕</th>
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100 text-right" onclick="app.sortTable('accuracy')">正答率 ↕</th>
+                                <th class="p-3 font-semibold cursor-pointer hover:bg-sky-100 text-right" onclick="app.sortTable('understanding')">主観的理解度 ↕</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result-tbody" class="text-gray-700">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+window.app = {
+    data: [], // 解析された生徒データの配列
+    chartInstance: null,
+    sortState: { key: 'id', asc: true },
+
+    init() {
+        const fileInput = document.getElementById('file-input');
+        const dropZone = document.getElementById('drop-zone');
+        const exportBtn = document.getElementById('export-csv-btn');
+
+        // イベントリスナーの設定
+        fileInput.addEventListener('change', (e) => this.handleFiles(e.target.files));
+        exportBtn.addEventListener('click', () => this.exportCSV());
+
+        // ドラッグ＆ドロップのイベント
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                this.handleFiles(e.dataTransfer.files);
+            }
+        });
+    },
+
+    async handleFiles(files) {
+        if (files.length === 0) return;
+        
+        this.data = []; // データをリセット
+        document.getElementById('chart-container').classList.add('hidden');
+        document.getElementById('table-container').classList.add('hidden');
+        document.getElementById('export-csv-btn').disabled = true;
+
+        const readPromises = Array.from(files).map(file => this.readFile(file));
+        
+        try {
+            const results = await Promise.all(readPromises);
+            // 正常に解析できたデータのみを抽出
+            this.data = results.filter(res => res !== null);
+            
+            if (this.data.length > 0) {
+                // デフォルトは番号順でソート
+                this.sortData('class', true);
+                this.sortData('id', true);
+                
+                this.renderTable();
+                this.renderChart();
+                
+                document.getElementById('chart-container').classList.remove('hidden');
+                document.getElementById('table-container').classList.remove('hidden');
+                document.getElementById('export-csv-btn').disabled = false;
+                document.getElementById('student-count').textContent = this.data.length;
+            } else {
+                alert("有効なJSONデータが見つかりませんでした。");
+            }
+        } catch (error) {
+            console.error("File reading error:", error);
+            alert("ファイルの読み込み中にエラーが発生しました。");
+        }
+    },
+
+    readFile(file) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    const parsedData = this.processStudentData(json, file.name);
+                    resolve(parsedData);
+                } catch (error) {
+                    console.error(`Error parsing JSON from ${file.name}:`, error);
+                    resolve(null); // エラーファイルはスキップ
+                }
+            };
+            reader.readAsText(file);
+        });
+    },
+
+    processStudentData(json, filename) {
+        // 対象のJSONファイルか簡易チェック
+        if (!json.reportData || !json.studentId) return null;
+
+        let totalAttempts = 0;
+        let totalMistakes = 0;
+        let totalCompletedGroups = 0;
+        let totalGroupsAll = 0;
+        let totalUnderstood = 0;
+        let totalNotUnderstood = 0;
+
+        // 全トピックのデータを合算
+        Object.values(json.reportData).forEach(topic => {
+            totalAttempts += topic.attempts || 0;
+            totalMistakes += topic.mistakes || 0;
+            totalCompletedGroups += topic.completedGroups || 0;
+            totalGroupsAll += topic.totalGroups || 0;
+            totalUnderstood += topic.understoodCount || 0;
+            totalNotUnderstood += topic.notUnderstoodCount || 0;
+        });
+
+        // 達成率 (最後まで解き切った割合)
+        const achievement = totalGroupsAll > 0 ? (totalCompletedGroups / totalGroupsAll) * 100 : 0;
+        
+        // 正答率 (挑戦した問題のうち正解した割合)
+        const correctAnswers = totalAttempts - totalMistakes;
+        const accuracy = totalAttempts > 0 ? (correctAnswers / totalAttempts) * 100 : 0;
+
+        // 主観的理解度 (解説を読んで理解できたと答えた割合)
+        const understandingTotal = totalUnderstood + totalNotUnderstood;
+        const understandingRate = understandingTotal > 0 ? (totalUnderstood / understandingTotal) * 100 : 0;
+
+        // 実施日時のフォーマット (startedAt または savedAt を使用)
+        const dateStr = json.savedAt || json.startedAt;
+        const dateObj = dateStr ? new Date(dateStr) : new Date();
+        const formattedDate = `${dateObj.getFullYear()}/${(dateObj.getMonth()+1).toString().padStart(2, '0')}/${dateObj.getDate().toString().padStart(2, '0')} ${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
+
+        return {
+            filename: filename,
+            studentClass: json.studentClass || "-",
+            studentId: isNaN(parseInt(json.studentId)) ? json.studentId : parseInt(json.studentId), // 数値ソート用
+            studentName: json.studentName || "未入力",
+            date: formattedDate,
+            rawDate: dateObj.getTime(), // ソート用
+            achievement: Math.round(achievement),
+            accuracy: Math.round(accuracy),
+            understandingRate: Math.round(understandingRate),
+            attempts: totalAttempts,
+            mistakes: totalMistakes
+        };
+    },
+
+    renderTable() {
+        const tbody = document.getElementById('result-tbody');
+        tbody.innerHTML = '';
+
+        this.data.forEach((student, index) => {
+            const tr = document.createElement('tr');
+            tr.className = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+            
+            tr.innerHTML = `
+                <td class="p-3 border-b border-gray-200">${student.studentClass}</td>
+                <td class="p-3 border-b border-gray-200">${student.studentId}</td>
+                <td class="p-3 border-b border-gray-200 font-medium">${student.studentName}</td>
+                <td class="p-3 border-b border-gray-200 text-sm">${student.date}</td>
+                <td class="p-3 border-b border-gray-200 text-right">
+                    <span class="inline-block w-12 text-right">${student.achievement}%</span>
+                </td>
+                <td class="p-3 border-b border-gray-200 text-right font-bold ${student.accuracy >= 80 ? 'text-green-600' : student.accuracy < 50 ? 'text-red-500' : 'text-gray-800'}">
+                    <span class="inline-block w-12 text-right">${student.accuracy}%</span>
+                </td>
+                <td class="p-3 border-b border-gray-200 text-right">
+                    <span class="inline-block w-12 text-right">${student.understandingRate}%</span>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    },
+
+    renderChart() {
+        const ctx = document.getElementById('scoreChart').getContext('2d');
+        
+        // 既存のグラフがあれば破棄
+        if (this.chartInstance) {
+            this.chartInstance.destroy();
+        }
+
+        // 正答率の分布（10%刻み）を集計
+        const bins = Array(10).fill(0);
+        const labels = ['0-10%', '11-20%', '21-30%', '31-40%', '41-50%', '51-60%', '61-70%', '71-80%', '81-90%', '91-100%'];
+        
+        let sumAccuracy = 0;
+
+        this.data.forEach(student => {
+            sumAccuracy += student.accuracy;
+            let binIndex = Math.floor((student.accuracy - 0.1) / 10);
+            if (student.accuracy === 0) binIndex = 0;
+            if (binIndex < 0) binIndex = 0;
+            if (binIndex > 9) binIndex = 9;
+            bins[binIndex]++;
+        });
+
+        const avgAccuracy = this.data.length > 0 ? (sumAccuracy / this.data.length).toFixed(1) : 0;
+        document.getElementById('summary-stats').innerHTML = `
+            <strong>平均正答率:</strong> ${avgAccuracy}% <br>
+            <strong>提出者数:</strong> ${this.data.length}名
+        `;
+
+        this.chartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '人数',
+                    data: bins,
+                    backgroundColor: 'rgba(56, 189, 248, 0.6)',
+                    borderColor: 'rgba(2, 132, 199, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    },
+
+    sortTable(key) {
+        // ソート方向の切り替え
+        if (this.sortState.key === key) {
+            this.sortState.asc = !this.sortState.asc;
+        } else {
+            this.sortState.key = key;
+            this.sortState.asc = true;
+        }
+
+        this.sortData(key, this.sortState.asc);
+        this.renderTable();
+    },
+
+    sortData(key, asc) {
+        this.data.sort((a, b) => {
+            let valA, valB;
+            switch(key) {
+                case 'class': valA = a.studentClass; valB = b.studentClass; break;
+                case 'id': valA = a.studentId; valB = b.studentId; break;
+                case 'date': valA = a.rawDate; valB = b.rawDate; break;
+                case 'achievement': valA = a.achievement; valB = b.achievement; break;
+                case 'accuracy': valA = a.accuracy; valB = b.accuracy; break;
+                case 'understanding': valA = a.understandingRate; valB = b.understandingRate; break;
+                default: valA = a.studentId; valB = b.studentId;
+            }
+
+            if (valA < valB) return asc ? -1 : 1;
+            if (valA > valB) return asc ? 1 : -1;
+            return 0;
+        });
+    },
+
+    exportCSV() {
+        if (this.data.length === 0) return;
+
+        // CSVヘッダー
+        let csvContent = "クラス,番号,名前,実施日時,達成率(%),正答率(%),主観的理解度(%),問題挑戦数,間違い数\n";
+
+        // データ行
+        this.data.forEach(student => {
+            // カンマが含まれている場合の対策としてダブルクォーテーションで囲む
+            const row = [
+                `"${student.studentClass}"`,
+                `"${student.studentId}"`,
+                `"${student.studentName}"`,
+                `"${student.date}"`,
+                student.achievement,
+                student.accuracy,
+                student.understandingRate,
+                student.attempts,
+                student.mistakes
+            ];
+            csvContent += row.join(",") + "\n";
+        });
+
+        // BOMを付与して文字化けを防ぐ (Excel対応)
+        const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+        const blob = new Blob([bom, csvContent], { type: "text/csv;charset=utf-8;" });
+        
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}${(today.getMonth()+1).toString().padStart(2, '0')}${today.getDate().toString().padStart(2, '0')}`;
+        
+        link.setAttribute("href", url);
+        link.setAttribute("download", `学習成果レポート_${dateString}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.app.init();
+});
+</script>
+
+</body>
+</html>
