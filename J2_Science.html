@@ -133,6 +133,7 @@
             <h1 class="text-3xl font-bold text-sky-800 mb-4">生物 理解度チェック<br>(人体のはたらき)</h1>
             <p class="text-gray-600 mb-6">はじめに、モードを選択するか、出席番号と名前を入力してください。Google Classroomの課題にJSONファイルを添付して提出してください。</p>
             <div class="space-y-4 mb-6">
+   	        <input type="text" id="student-class-input" placeholder="クラス (例: A)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-id-input" placeholder="出席番号" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-name-input" placeholder="名前" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
@@ -185,6 +186,7 @@
 window.app = {
     // Application state
     state: {
+	studentClass: '',
         studentId: '',
         studentName: '',
         startedAt: null,
@@ -233,6 +235,7 @@ window.app = {
         saveProgressBtn: document.getElementById('save-progress-btn'),
         reviewBtn: document.getElementById('review-btn'),
         restartBtn: document.getElementById('restart-btn'),
+	studentClassInput: document.getElementById('student-class-input'),
         studentIdInput: document.getElementById('student-id-input'),
         studentNameInput: document.getElementById('student-name-input'),
         reportStudentInfo: document.getElementById('report-student-info'),
@@ -306,10 +309,11 @@ window.app = {
     startQuiz(isLoaded = false) {
         this.state.isTeacherMode = false;
         if (!isLoaded) {
+	    this.state.studentClass = this.elements.studentClassInput.value;
             this.state.studentId = this.elements.studentIdInput.value;
             this.state.studentName = this.elements.studentNameInput.value;
-            if (!this.state.studentId || !this.state.studentName) {
-                alert('出席番号と名前を入力してください。');
+	    if (!this.state.studentClass || !this.state.studentId || !this.state.studentName) {
+                alert('クラス、出席番号、名前を入力してください。');
                 return;
             }
             this.state.startedAt = new Date().toISOString();
@@ -377,6 +381,7 @@ window.app = {
     saveProgress() {
         this.state.saveHistory.push(new Date().toISOString()); 
         const saveData = {
+	    studentClass: this.state.studentClass,
             studentId: this.state.studentId,
             studentName: this.state.studentName,
             startedAt: this.state.startedAt,
@@ -393,11 +398,12 @@ window.app = {
         const blob = new Blob([JSON.stringify(saveData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
+	const studentClass = this.state.studentClass || 'class';
         const studentId = this.state.studentId || 'id';
         const studentName = this.state.studentName || 'name';
         const date = new Date().toISOString().slice(0, 10);
         a.href = url;
-        a.download = `${studentId}_${studentName}_biology-progress_${date}.json`;
+	a.download = `${studentClass}_${studentId}_${studentName}_biology-progress_${date}.json`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -423,6 +429,7 @@ window.app = {
             try {
                 const loadedData = JSON.parse(e.target.result);
                 if (loadedData.reportData && loadedData.usedQuestionIds && loadedData.studentId) {
+		    this.state.studentClass = loadedData.studentClass || '';
                     this.state.studentId = loadedData.studentId;
                     this.state.studentName = loadedData.studentName;
                     this.state.startedAt = loadedData.startedAt || new Date().toISOString();
@@ -434,7 +441,8 @@ window.app = {
                     this.state.reportData = loadedData.reportData;
                     this.state.teacherModeHistory = loadedData.teacherModeHistory || []; 
                     this.state.saveHistory = loadedData.saveHistory || []; 
-                    
+
+		    this.elements.studentClassInput.value = this.state.studentClass;
                     this.elements.studentIdInput.value = this.state.studentId;
                     this.elements.studentNameInput.value = this.state.studentName;
 
@@ -689,6 +697,7 @@ window.app = {
     // Generate and display the final report
     generateReport() {
         this.elements.reportStudentInfo.innerHTML = `
+            <p><strong>クラス:</strong> ${this.state.studentClass}</p>
             <p><strong>出席番号:</strong> ${this.state.studentId}</p>
             <p><strong>名前:</strong> ${this.state.studentName}</p>
         `;
@@ -913,6 +922,7 @@ window.app = {
         this.elements.reportModal.classList.add('hidden', 'scale-95', 'opacity-0');
         this.elements.reportModal.classList.remove('scale-100', 'opacity-100');
         this.elements.startModal.style.display = 'block';
+	this.elements.studentClassInput.value = '';
         this.elements.studentIdInput.value = '';
         this.elements.studentNameInput.value = '';
     }
