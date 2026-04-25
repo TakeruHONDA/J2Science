@@ -438,7 +438,14 @@ window.app = {
                     this.state.currentGroupIndex = loadedData.currentGroupIndex;
                     this.state.topicGroups = loadedData.topicGroups;
                     this.state.usedQuestionIds = new Set(loadedData.usedQuestionIds);
-                    this.state.reportData = loadedData.reportData;
+		    // ★他教科のデータ混入を防ぐためのフィルター処理を追加
+                    this.initializeReportData(); // まず現在のアプリの単元で初期化
+                    for (const topic of this.data.topics) {
+                        if (loadedData.reportData[topic]) {
+                        // 現在のアプリに存在する単元のデータだけを復元する
+                        this.state.reportData[topic] = loadedData.reportData[topic];
+                        }
+                    }
                     this.state.teacherModeHistory = loadedData.teacherModeHistory || []; 
                     this.state.saveHistory = loadedData.saveHistory || []; 
 
