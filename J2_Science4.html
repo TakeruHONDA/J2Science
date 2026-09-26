@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中学生物 1学期小テスト（動物の体のつくりとはたらき）</title>
+    <title>中学理科（化学・物理）小テスト</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -130,7 +130,7 @@
 
     <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div id="start-modal" class="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full text-center transform transition-all scale-100">
-            <h1 class="text-3xl font-bold text-sky-800 mb-4">1学期 生物分野<br>理解度チェック</h1>
+            <h1 class="text-3xl font-bold text-sky-800 mb-4">化学・物理分野<br>理解度チェック</h1>
             <p class="text-gray-600 mb-6">はじめに、モードを選択するか、出席番号と名前を入力してください。Google Classroomの課題にJSONファイルを添付して提出してください。</p>
             <div class="space-y-4 mb-6">
    	        <input type="text" id="student-class-input" placeholder="クラス (例: A)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -260,227 +260,2173 @@ window.app = {
         throwOnError: false
     },
 
-    // 抽出・結合した新しい問題データ
-    data: {
+   // ★ Data: PDFおよびドキュメントに基づく新しい問題データに更新
+        data: {
         topics: [
-            "消化と吸収",
-            "呼吸と血液循環",
-            "感覚器官と運動器官"
-        ],
+            "第4章 物質の成り立ち ①",
+            "第4章 物質の成り立ち ②",
+            "第4章 物質の成り立ち ③",
+            "第5章 さまざまな化学変化",
+            "第6章 物質の酸化と還元 ①",
+            "第6章 物質の酸化と還元 ②",
+            "第6章 物質の酸化と還元 ③",
+            "第7章 化学変化と質量",
+            "第4章 水溶液とイオン ①",
+            "第4章 水溶液とイオン ②",
+            "第5章 酸とアルカリ ①",
+            "第5章 酸とアルカリ ②",
+            "第6章 化学電池"
+],
         questions: [
-            // ===== トピック0: 消化と吸収 =====
             {
-                id: 1, topicIndex: 0, group: 'digestive-system',
-                question: "図は，ヒトの消化に関係する器官を模式的に表したものである。<br>食物は，口から肛門までを，どのような順に通っていくか。図の記号を正しく並べたものを，次のア〜オから選びなさい。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア 口→A→B→C→E→G→F→肛門",
-                    "イ 口→A→B→C→D→G→F→肛門",
-                    "ウ 口→B→C→E→G→F→肛門",
-                    "エ 口→B→C→E→F→肛門",
-                    "オ 口→B→C→G→F→肛門"
-                ],
-                answer: 4,
-                explanation: "食物は、口 → 食道(B) → 胃(C) → 小腸(G) → 大腸(F) → 肛門 の順に消化管を通ります。肝臓(D)やすい臓(E)に直接食物が入ることはありません。"
+                        "id": 1,
+                        "topicIndex": 0,
+                        "group": "q_1",
+                        "question": "炭酸水素ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>と，炭酸ナトリウム水溶液のそれぞれにフェノー<br>ルフタレイン溶液を加えたとき，どちらがよりこい赤色になるか。",
+                        "options": [
+                                    "炭酸ナトリウム水溶液",
+                                    "炭酸水素ナトリウム水溶液"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭酸ナトリウムは炭酸水素ナトリウムよりも水溶液が強いアルカリ性を示す ため，フェノールフタレイン溶液を加えるとこい赤色になる。"
             },
             {
-                id: 2, topicIndex: 0, group: 'digestive-system',
-                question: "口から肛門までの１本の長い管を何というか。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["消化管", "血管", "気管", "リンパ管"],
-                answer: 0,
-                explanation: "口から始まり、食道、胃、小腸、大腸を経て肛門に至る、食物の通り道となる1本の長い管を「消化管」といいます。"
+                        "id": 2,
+                        "topicIndex": 0,
+                        "group": "q_2",
+                        "question": "酸化銀を加熱すると白色の物質が残るが，酸化銀の元の色は何か。",
+                        "options": [
+                                    "金色",
+                                    "銀色",
+                                    "黒色",
+                                    "白色"
+                        ],
+                        "answer": 2,
+                        "explanation": "酸化銀は黒色の固体である。"
             },
             {
-                id: 3, topicIndex: 0, group: 'digestive-system',
-                question: "図のD（肝臓）でつくられる消化液は何か。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["だ液", "胃液", "胆汁", "すい液"],
-                answer: 2,
-                explanation: "肝臓でつくられる消化液は「胆汁」です。胆のう（D）に蓄えられた後、小腸に分泌されます。"
+                        "id": 3,
+                        "topicIndex": 0,
+                        "group": "q_3",
+                        "question": "酸化銀を加熱して残った物質は電気を通したが，元の酸化銀は電気を通すか，<br>通さないか。",
+                        "options": [
+                                    "通さない",
+                                    "通す"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銀は電気を通さない。"
             },
             {
-                id: 4, topicIndex: 0, group: 'digestive-system',
-                question: "図のEは何という器官か。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["肝臓", "胆のう", "すい臓", "小腸"],
-                answer: 2,
-                explanation: "図のEは「すい臓」です。すい液をつくり、小腸（十二指腸）へ分泌します。"
+                        "id": 4,
+                        "topicIndex": 0,
+                        "group": "q_4",
+                        "question": "酸化銀を図のように熱すると，気体が発生した。この気体に火のついた線香を入れるとどうなるか。<br><img src='Figs/q4.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "激しく燃える",
+                                    "線香の火が消える",
+                                    "線香の火が青色になる",
+                                    "線香の火が緑色になる"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銀を加熱すると酸素が発生する。酸素に火のついた線香を入れると，線 香が炎をあげて激しく燃える。"
             },
             {
-                id: 5, topicIndex: 0, group: 'digestive-system',
-                question: "図のFは何という器官か。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["胃", "小腸", "大腸", "直腸"],
-                answer: 2,
-                explanation: "小腸（G）を取り囲むように位置しているFは「大腸」です。"
+                        "id": 5,
+                        "topicIndex": 0,
+                        "group": "q_5",
+                        "question": "酸化銀を加熱したときに発生する気体は何か。",
+                        "options": [
+                                    "アンモニア",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 1,
+                        "explanation": "酸化銀を加熱すると酸素が発生する。"
             },
             {
-                id: 6, topicIndex: 0, group: 'digestive-system',
-                question: "消化された養分がおもに吸収されるのはどの器官か。図のA〜Gから選びなさい。<br><img src='figure_digestive.png' alt='消化器官の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["C：胃", "E：すい臓", "F：大腸", "G：小腸"],
-                answer: 3,
-                explanation: "消化された養分は、おもに「小腸」の壁にある柔毛から吸収されます。"
+                        "id": 6,
+                        "topicIndex": 0,
+                        "group": "q_6",
+                        "question": "酸化銀を加熱すると発生する，2 つの物質は何か。",
+                        "options": [
+                                    "酸素と金",
+                                    "酸素と銀",
+                                    "酸素と銅",
+                                    "水素と銀",
+                                    "二酸化炭素と銀"
+                        ],
+                        "answer": 1,
+                        "explanation": "酸化銀を加熱すると，銀と酸素に分かれる。"
             },
             {
-                id: 7, topicIndex: 0, group: 'digestion-table',
-                question: "表は，食物に含まれる有機物A，B，Cと，それらが分解されていく間にはたらく消化液・消化酵素との関係を示したものである。表中の○は「有機物を分解する」，×は「有機物を分解しない」を表している。<br>表中の器官X〜Zは何か。正しく組み合わせたものを，次のア〜エから選びなさい。<br><img src='table_digestion.png' alt='消化液の表' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア 器官X－小腸，器官Y－すい臓，器官Z－胃",
-                    "イ 器官X－小腸，器官Y－すい臓，器官Z－大腸",
-                    "ウ 器官X－肝臓，器官Y－小腸，器官Z－胃",
-                    "エ 器官X－肝臓，器官Y－小腸，器官Z－大腸"
-                ],
-                answer: 0,
-                explanation: "表の内容により異なりますが、一般にデンプン・タンパク質・脂肪の全てを分解する消化液を作るのは「すい臓」、脂肪の分解を助ける（消化酵素は含まない）胆汁を作るのは「肝臓」です。"
+                        "id": 7,
+                        "topicIndex": 0,
+                        "group": "q_7",
+                        "question": "ある物質が別の物質になる変化を何というか。",
+                        "options": [
+                                    "化学変化（化学反応）",
+                                    "状態変化"
+                        ],
+                        "answer": 0,
+                        "explanation": "物質そのものが変化して別の物質になることを，化 か 学 がく 変 へん 化 か （化 か 学 がく 反 はん 応 のう ）とい う。状態変化は，物質そのものは変化せず，温度がもどると物質も元の状態 にもどる。"
             },
             {
-                id: 8, topicIndex: 0, group: 'enzyme-explanation',
-                question: "消化酵素の説明として，間違っているものはどれか。次のア〜エから選びなさい。",
-                options: [
-                    "ア さまざまな種類があり，決まった相手にはたらく。",
-                    "イ 養分を分解するとき，それ自身は変化しない。",
-                    "ウ 温度など，まわりの条件に関係なく，同じはたらきをする。",
-                    "エ 少量でくり返しはたらいて，養分を分解する。"
-                ],
-                answer: 2,
-                explanation: "（※この問題は間違っている記述を選ぶ問題です）消化酵素のはたらきは温度の影響を強く受けます。人の体温に近い35〜40℃付近で最もよくはたらき、温度が低すぎたり高すぎたりするとはたらきが弱くなります。したがって、「温度に関係なく」としている選択肢が正解となります。"
-            },
-
-            // ===== トピック1: 呼吸と血液循環 =====
-            {
-                id: 9, topicIndex: 1, group: 'respiration-alveoli',
-                question: "肺胞の説明として間違っているものはどれか。次のア〜エから選びなさい。",
-                options: [
-                    "ア 壁が非常にうすい膜でできている。",
-                    "イ 表面積は，あわせて50〜100m²くらいある。",
-                    "ウ １個の大きさが直径１〜２mmくらいである。",
-                    "エ 気体のやりとりを行う。"
-                ],
-                answer: 2,
-                explanation: "肺胞の1個の大きさは非常に小さく、直径は約0.1〜0.2mm程度です。1〜2mmではありません。"
+                        "id": 8,
+                        "topicIndex": 0,
+                        "group": "q_8",
+                        "question": "1 種類の物質が2 種類以上の物質に分かれる変化を何というか。",
+                        "options": [
+                                    "凝固",
+                                    "沸騰",
+                                    "分解",
+                                    "分離"
+                        ],
+                        "answer": 2,
+                        "explanation": "1 種類の物質が2 種類以上の別の物質に分かれる化学変化を分 ぶん 解 かい という。"
             },
             {
-                id: 10, topicIndex: 1, group: 'respiration-alveoli',
-                question: "肺には，肺胞が数多くある。このようなつくりは，ヒトが呼吸するうえで，どのようにつごうがよいか。次のア〜エから選びなさい。",
-                options: [
-                    "ア 気体を吸収するものと放出するものに分けることができる。",
-                    "イ 肺の体積が大きくなり，より多くの空気を吸うことができる。",
-                    "ウ 肺の表面積が大きくなり，気体の交換の効率がよくなる。",
-                    "エ 肺がじょうぶになり，より強く空気を吸うことができる。"
-                ],
-                answer: 2,
-                explanation: "無数の小さな肺胞があることで、空気に触れる表面積が非常に大きくなり、毛細血管との間で酸素と二酸化炭素の交換が効率よく行われます。"
+                        "id": 9,
+                        "topicIndex": 0,
+                        "group": "q_9",
+                        "question": "加熱による分<br>ぶん<br>解<br>かい<br>をとくに何というか。",
+                        "options": [
+                                    "蒸発",
+                                    "熱分解",
+                                    "沸騰",
+                                    "融解 3"
+                        ],
+                        "answer": 1,
+                        "explanation": "分解の中でも，加熱によって起こる分解を熱 ねつ 分 ぶん 解 かい という。"
             },
             {
-                id: 11, topicIndex: 1, group: 'respiration-model',
-                question: "図３のA、Bはヒトの呼吸運動を表し、図１、図２は呼吸のしくみを示すモデルである。ヒトが<b>「息を吸うとき」</b>の胸の内部のようすと、それに対応するモデルのようすの正しい組み合わせを、次のア〜エから選びなさい。<br><img src='figures_1_2_3.png' alt='呼吸モデル' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア：図3のA と 図1",
-                    "イ：図3のA と 図2",
-                    "ウ：図3のB と 図1",
-                    "エ：図3のB と 図2"
-                ],
-                answer: 1,
-                explanation: "息を吸うときは、横隔膜が下がり、ろっ骨が上がって胸の内部（胸腔）の体積が大きくなります（図3のA）。これにより胸の内部の気圧が下がり、肺に空気が流れ込みます。モデルでは、底のゴム膜を下へ引く（図2）と、容器内の空間が広がって気圧が下がり、ゴム風船（肺）に空気が入りふくらむことで、息を吸うしくみを再現しています。"
+                        "id": 10,
+                        "topicIndex": 0,
+                        "group": "q_10",
+                        "question": "H 字管を使った水の電気分解で，電源装置の－極につないだ電極を<br>（　A　），＋極につないだ電極を（　B　）という。A，B にあてはまる言<br>葉を答えよ。",
+                        "options": [
+                                    "A：陰極　B：陽極",
+                                    "A：陽極　B：陰極"
+                        ],
+                        "answer": 0,
+                        "explanation": "電気分解をするとき，電源装置の＋極につないだ電極を陽 よう 極 きょく ，－極につない だ電極を陰 いん 極 きょく という。"
             },
             {
-                id: 12, topicIndex: 1, group: 'respiration-gas',
-                question: "ヒトの呼気（はき出した息）に含まれる気体の成分の割合を表した図として最も適切なものを、ア〜エから選びなさい。（※A、B、Cはそれぞれ窒素、酸素、二酸化炭素のいずれかを表しています。また、左のグラフから、ア, イ, ウ, エとなります。）<br><img src='piechart_koki.png' alt='呼気の成分' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア", "イ", "ウ", "エ"],
-                answer: 1,
-                explanation: "吸い込む空気（吸気）には、窒素が約78%、酸素が約21%、二酸化炭素が約0.04%含まれています。肺で酸素が血液中に取り込まれ、代わりに二酸化炭素が排出されるため、はき出す息（呼気）では酸素（図のB）が減って約16%に、二酸化炭素（図のC）が増えて約4%になります。窒素（図のA）の割合はほとんど変化しません。したがって、イのグラフが正解です。"
+                        "id": 11,
+                        "topicIndex": 0,
+                        "group": "q_11",
+                        "question": "水を電気分解したときに，陰極から発生する気体は何か。",
+                        "options": [
+                                    "塩素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 2,
+                        "explanation": "水を電気分解すると，陰 いん 極 きょく に水素が発生する。"
             },
             {
-                id: 13, topicIndex: 1, group: 'circulation-vessels',
-                question: "動脈はX，Yのどちらか。記号で答えなさい。<br><img src='figure_vessels_XY.png' alt='血管XとY' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["X", "Y", "どちらも動脈", "どちらも静脈"],
-                answer: 0,
-                explanation: "静脈には、血圧が低いために起こる血液の逆流を防ぐための「弁」があります。弁がない方が動脈です。"
+                        "id": 12,
+                        "topicIndex": 0,
+                        "group": "q_12",
+                        "question": "水を電気分解したときに，陽極から発生する気体は何か。",
+                        "options": [
+                                    "塩素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 1,
+                        "explanation": "水を電気分解すると，陽 よう 極 きょく に酸素が発生する。"
             },
             {
-                id: 14, topicIndex: 1, group: 'circulation-body',
-                question: "bを流れる血液よりも，aを流れる血液に特に多く含まれている物質は何か。次のア〜ウから選びなさい。<br><img src='figure_circulation.png' alt='血液循環' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア ブドウ糖", "イ 酸素", "ウ 二酸化炭素"],
-                answer: 1,
-                explanation: "肺を通った後の血液（肺静脈）には、肺胞で取り込まれた酸素が多く含まれています。"
+                        "id": 13,
+                        "topicIndex": 0,
+                        "group": "q_13",
+                        "question": "水を電気分解して得られる水素と酸素の体積比はどのくらいか。",
+                        "options": [
+                                    "1：1",
+                                    "1：2",
+                                    "1：3",
+                                    "2：1",
+                                    "3：1"
+                        ],
+                        "answer": 3,
+                        "explanation": "水を電気分解したときに発生する水素（陰 いん 極 きょく ）と酸素（陽 よう 極 きょく ）の体積比は 2：1 になる。"
             },
             {
-                id: 15, topicIndex: 1, group: 'circulation-liver',
-                question: "① 血管Aを流れる血液には特に多く含まれているが，血管Cを流れる血液には少なくなっていることがある物質はどれか。<br><img src='figure_liver_ABC.png' alt='肝臓と血管' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア 脂肪", "イ ブドウ糖", "ウ アンモニア", "エ 尿素", "オ モノグリセリド"],
-                answer: 2,
-                explanation: "細胞の活動で生じた有害な「アンモニア」は、血液によって肝臓に運ばれ、害の少ない尿素につくり変えられます。そのため、肝臓を出る血管Cでは少なくなります。"
+                        "id": 14,
+                        "topicIndex": 0,
+                        "group": "q_14",
+                        "question": "電気のエネルギーによる分解をとくに何というか。",
+                        "options": [
+                                    "電気分解",
+                                    "熱分解",
+                                    "沸騰"
+                        ],
+                        "answer": 0,
+                        "explanation": "電流を流して物質を分解することを電気分解という。"
             },
             {
-                id: 16, topicIndex: 1, group: 'circulation-liver',
-                question: "② 血管AとBを流れる血液には含まれているが，血管Cを流れる血液には特に少なくなっている物質はどれか。<br><img src='figure_liver_ABC.png' alt='肝臓と血管' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア 脂肪", "イ ブドウ糖", "ウ アンモニア", "エ 尿素", "オ 酸素"],
-                answer: 4,
-                explanation: "肝臓の細胞が活動するために「酸素」を消費するため、肝臓から出ていく血管Cでは酸素が少なくなっています。（※便宜上、選択肢オを追加しています）"
-            },
-
-            // ===== トピック2: 感覚器官と運動器官 =====
-            {
-                id: 17, topicIndex: 2, group: 'sense-eye',
-                question: "図１で，光が通過できるように透明になっている部分はどこか。正しく組み合わせているものを，次のア〜エから選びなさい。<br><img src='figure_eye.png' alt='目の構造' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア B，C", "イ B，D", "ウ C，D", "エ D，E"],
-                answer: 2,
-                explanation: "光が目の中を進むため、角膜や水晶体（C）、および眼球内を満たすガラス体（D）などは透明になっています。"
+                        "id": 15,
+                        "topicIndex": 0,
+                        "group": "q_15",
+                        "question": "物質をつくる最小の粒を何というか。",
+                        "options": [
+                                    "原子",
+                                    "砂糖",
+                                    "食塩",
+                                    "有機物"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭酸ナトリウムの水 すい 溶 よう 液 えき と炭酸水素ナトリウムの水溶液はどちらもアルカリ 性であるが，炭酸ナトリウムの水溶液のほうが，より強いアルカリ性になる。"
             },
             {
-                id: 18, topicIndex: 2, group: 'sense-eye',
-                question: "次のア〜エは，図１のB，C，Eの部分と網膜のいずれかのはたらきについて述べたものである。<b>「Bの部分」</b>のはたらきについて述べたものを選びなさい。<br><img src='figure_eye.png' alt='目の構造' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア ここにある細胞が光の刺激を受けとる。",
-                    "イ 光を屈折させ，網膜の上に像を結ばせる。",
-                    "ウ 光の刺激の信号を脳に伝える。",
-                    "エ ひとみの大きさを調節している。"
-                ],
-                answer: 3,
-                explanation: "Bの虹彩（こうさい）は、ひとみの大きさを変えて目に入る光の量を調節しています。"
+                        "id": 16,
+                        "topicIndex": 0,
+                        "group": "q_16",
+                        "question": "次の原<br>げん<br>子<br>し<br>についての記述で，正しいものを1 つ選べ。",
+                        "options": [
+                                    "原子はどの種類でも質量はすべて同じである。",
+                                    "原子の質量は種類によって決まっている。",
+                                    "原子の質量は化学変化によって変化する。",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭酸ナトリウムは炭酸水素ナトリウムよりも水溶液が強いアルカリ性を示す ため，フェノールフタレイン溶液を加えるとこい赤色になる。"
             },
             {
-                id: 19, topicIndex: 2, group: 'sense-eye',
-                question: "図１の「筋肉」のはたらきについて述べたものを，次のア〜エから選びなさい。<br><img src='figure_eye.png' alt='目の構造' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア Aの部分に入る光の量を変える。",
-                    "イ Dの部分に入る光の量を変える。",
-                    "ウ Cの部分の厚さを変える。",
-                    "エ 網膜の厚さを変える。"
-                ],
-                answer: 2,
-                explanation: "毛様筋は、水晶体（C）の厚さを変えることで、遠くや近くのものにピントを合わせるはたらきをします。"
+                        "id": 17,
+                        "topicIndex": 1,
+                        "group": "q_17",
+                        "question": "アルファベット1 文字または2 文字で表される，原子の種類を何というか。",
+                        "options": [
+                                    "元素",
+                                    "原素",
+                                    "粒子"
+                        ],
+                        "answer": 0,
+                        "explanation": "原子の種類を元 げん 素 そ という。"
             },
             {
-                id: 20, topicIndex: 2, group: 'sense-eye',
-                question: "図２は，黒板に書いた文字である。これを花子さんが見たとき，花子さんの網膜上に結ばれる「感覚器官」の像は，どのようにうつっているか。次のア〜エから選びなさい。<br><img src='figure_eye_fig2.png' alt='図2 感覚器官' class='mt-4 max-w-full h-auto rounded-lg shadow-md'><br><img src='figure_eye_choices.png' alt='選択肢の図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["ア", "イ", "ウ", "エ"],
-                answer: 1,
-                explanation: "水晶体（凸レンズ）を通った光は網膜上に「実像」を結ぶため、上下左右が逆になった倒立像としてうつります。"
+                        "id": 18,
+                        "topicIndex": 1,
+                        "group": "q_18",
+                        "question": "原子を原子番号順に並べ，原子の性質について整理した表を何というか。",
+                        "options": [
+                                    "元素の周期表（周期表）",
+                                    "密度表",
+                                    "溶解度曲線"
+                        ],
+                        "answer": 0,
+                        "explanation": "性質が似ている元 げん 素 そ が縦の列に並ぶように整理した表を元 げん 素 そ の周 しゅう 期 き 表 ひょう （周 しゅう 期 き 表 ひょう ）という。"
             },
             {
-                id: 21, topicIndex: 2, group: 'sense-ear',
-                question: "図で，『① 体の回転を感じる』はたらきをするのはどの部分か。A〜Eから選びなさい。<br><img src='figure_ear.png' alt='耳の構造' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["A", "B", "C", "D", "E"],
-                answer: 2,
-                explanation: "図の半規管（C付近）は、体の回転や傾きなどを感じるはたらきをしています。"
+                        "id": 19,
+                        "topicIndex": 1,
+                        "group": "q_19",
+                        "question": "水の電気分解で，陰極側で発生する気体の元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>は何か。",
+                        "options": [
+                                    "C",
+                                    "H",
+                                    "N",
+                                    "Ｏ"
+                        ],
+                        "answer": 0,
+                        "explanation": "水素の元素記号はH である。"
             },
             {
-                id: 22, topicIndex: 2, group: 'sense-ear',
-                question: "図で，『② 内部を満たす液体の振動を，音の刺激として受けとる』はたらきをするのはどの部分か。A〜Eから選びなさい。<br><img src='figure_ear.png' alt='耳の構造' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: ["A", "B", "C", "D", "E"],
-                answer: 3,
-                explanation: "うずまき管（D付近）の内部は液体で満たされており、その振動を聴神経の末端が音の刺激として受けとります。"
+                        "id": 20,
+                        "topicIndex": 1,
+                        "group": "q_20",
+                        "question": "酸化銀を加熱すると白色の物質が残るが，この物質の元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>は何か。",
+                        "options": [
+                                    "Ag",
+                                    "Au",
+                                    "Cu",
+                                    "Fe"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銀を十分に加熱すると試験管に銀が残る。銀の元素記号はAg である。"
             },
             {
-                id: 23, topicIndex: 2, group: 'motor-arm',
-                question: "図１のように腕をのばすときと，図２のように腕を曲げるときには，筋肉A，Bはそれぞれどのようになるか。次のア〜エから選びなさい。<br><img src='figure_arm.png' alt='腕の筋肉' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
-                options: [
-                    "ア 腕をのばすときも腕を曲げるときも，筋肉Aは縮んで，筋肉Bはゆるむ。",
-                    "イ 腕をのばすときも腕を曲げるときも，筋肉Aはゆるんで，筋肉Bは縮む。",
-                    "ウ 腕をのばすときは，筋肉Aは縮んで，筋肉Bはゆるむ。腕を曲げるときは，筋肉Aはゆるんで，筋肉Bは縮む。",
-                    "エ 腕をのばすときは，筋肉Aはゆるんで，筋肉Bは縮む。腕を曲げるときは，筋肉Aは縮んで，筋肉Bはゆるむ。"
-                ],
-                answer: 3,
-                explanation: "腕を曲げるときは内側の筋肉（A）が縮み、外側の筋肉（B）がゆるみます。逆に腕をのばすときは、内側の筋肉（A）がゆるみ、外側の筋肉（B）が縮むことで関節が動きます。"
+                        "id": 21,
+                        "topicIndex": 1,
+                        "group": "q_21",
+                        "question": "酸素と結びついて酸化マグネシウムになる物質の，元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>は何か。",
+                        "options": [
+                                    "Al",
+                                    "Fe",
+                                    "Mg",
+                                    "Mn"
+                        ],
+                        "answer": 2,
+                        "explanation": "マグネシウムの元素記号はMg である。"
+            },
+            {
+                        "id": 22,
+                        "topicIndex": 1,
+                        "group": "q_22",
+                        "question": "元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>は，アルファベット1 文字または2 文字からなる記号で表される。<br>H は何を表す記号か。",
+                        "options": [
+                                    "酸素",
+                                    "水素",
+                                    "炭素",
+                                    "窒素"
+                        ],
+                        "answer": 0,
+                        "explanation": "物質をつくる最小の単位である小さな粒子を原 げん 子 し という。"
+            },
+            {
+                        "id": 23,
+                        "topicIndex": 1,
+                        "group": "q_23",
+                        "question": "原子番号6 で，元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>C が表すものは何か。",
+                        "options": [
+                                    "酸素",
+                                    "水素",
+                                    "炭素",
+                                    "窒素"
+                        ],
+                        "answer": 0,
+                        "explanation": "原子は種類ごとに質量や大きさが決まっていて，その値が化学変化によって 変わることはない。"
+            },
+            {
+                        "id": 24,
+                        "topicIndex": 1,
+                        "group": "q_24",
+                        "question": "食塩や人体にもふくまれる，元<br>げん<br>素<br>そ<br>記<br>き<br>号<br>ごう<br>Na で表される元素は何か。",
+                        "options": [
+                                    "アルミニウム",
+                                    "カリウム",
+                                    "ナトリウム",
+                                    "マグネシウム"
+                        ],
+                        "answer": 0,
+                        "explanation": ""
+            },
+            {
+                        "id": 25,
+                        "topicIndex": 1,
+                        "group": "q_25",
+                        "question": "物質の性質を示す最小の粒<br>りゅう<br>子<br>し<br>を何というか。",
+                        "options": [
+                                    "結晶",
+                                    "食塩",
+                                    "糖",
+                                    "分子",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": ""
+            },
+            {
+                        "id": 26,
+                        "topicIndex": 2,
+                        "group": "q_26",
+                        "question": "次の図で○は水素原子，◎は酸素原子を表している。このうち，水分子のモ<br>デルを表しているのはどれか。",
+                        "options": [
+                                    "◯◯◎",
+                                    "◯◎◯",
+                                    "◎◎◎",
+                                    "◎◯◎"
+                        ],
+                        "answer": 1,
+                        "explanation": "水分子は，酸素原子◎が1 個，水素原子◯が2 個集まってできている。"
+            },
+            {
+                        "id": 27,
+                        "topicIndex": 2,
+                        "group": "q_27",
+                        "question": "水を化<br>か<br>学がく<br>式<br>しき<br>で表したものは，次のうちどれか。",
+                        "options": [
+                                    "2 HO",
+                                    "OH 2",
+                                    "H2O",
+                                    "O2H"
+                        ],
+                        "answer": 2,
+                        "explanation": "水の分子はH2O と表す。水素原子は2 個結びついているので，水素原子を 表すH の右下に2 を小さく書く。"
+            },
+            {
+                        "id": 28,
+                        "topicIndex": 2,
+                        "group": "q_28",
+                        "question": "窒<br>ちっ<br>素<br>そ<br>のように，1 種類の元素でできている物質を何というか。",
+                        "options": [
+                                    "化合物",
+                                    "混合物",
+                                    "単体"
+                        ],
+                        "answer": 2,
+                        "explanation": "窒素は窒素原子が2 個集まって窒素分子をつくっており，単体の気体である。"
+            },
+            {
+                        "id": 29,
+                        "topicIndex": 2,
+                        "group": "q_29",
+                        "question": "酸化銀のように，2 種類以上の元素でできている物質を何というか。",
+                        "options": [
+                                    "化合物",
+                                    "混合物",
+                                    "単体"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銀は，銀と酸素が結びついてできている化合物である。"
+            },
+            {
+                        "id": 30,
+                        "topicIndex": 2,
+                        "group": "q_30",
+                        "question": "2 種類以上の物質が混ざってできているものを何というか。",
+                        "options": [
+                                    "化合物",
+                                    "混合物",
+                                    "単体"
+                        ],
+                        "answer": 1,
+                        "explanation": "空気は窒 ちっ 素 そ ，酸素，二酸化炭素，アルゴンなどの物質（気体）が混ざった混 合物である。"
+            },
+            {
+                        "id": 31,
+                        "topicIndex": 2,
+                        "group": "q_31",
+                        "question": "鉄と硫<br>い<br>黄<br>おう<br>の混合物を加熱するときに起こることとして正しい記述はどちら<br>か。",
+                        "options": [
+                                    "加熱をやめると反応も止まる。",
+                                    "加熱をやめても反応が続く。"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄と硫黄の混合物を加熱すると熱が発生するので，加熱をやめてもその熱で 反応が続く。"
+            },
+            {
+                        "id": 32,
+                        "topicIndex": 2,
+                        "group": "q_32",
+                        "question": "次の図のように，鉄と硫<br>い<br>黄<br>おう<br>を混合したA，B を用意し，A は加熱してすべ<br>て反応させ，B はそのままの状態にしておいた。磁石に近づけたとき引きつ<br>けられるのはA・B のどちらか。<br><img src='Figs/q32.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "A",
+                                    "B"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄と硫黄の混合物を加熱しすべて反応させた物質は鉄の性質をもたないた め，磁石につかない。B の中の鉄のみが磁石につく。"
+            },
+            {
+                        "id": 33,
+                        "topicIndex": 3,
+                        "group": "q_33",
+                        "question": "次の図のように，鉄と硫<br>い<br>黄<br>おう<br>を混合したA，B を用意し，A は加熱してすべ<br>て反応させ，B はそのままの状態にしておいた。うすい塩酸をかけると，刺<br>激臭がある有害な気体が発生するのはA・B のどちらか。<br><img src='Figs/q33.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "A",
+                                    "B"
+                        ],
+                        "answer": 0,
+                        "explanation": "空気中でマグネシウムを燃やしてできた酸 さん 化 か マグネシウムや，鉄を燃やして できた酸 さん 化 か 鉄 てつ は，それぞれ燃やす前とは異なる物質で，燃やす前の性質をもっ ていない。例えば，鉄に塩酸を加えると水素が発生するが，酸化鉄に塩酸を 加えても水素は発生しないなど，酸化鉄は鉄の性質をもっていない。それ以 外にも酸化鉄は電気を通さない，金属光沢がないなど，鉄とは性質が異なる。"
+            },
+            {
+                        "id": 34,
+                        "topicIndex": 3,
+                        "group": "q_34",
+                        "question": "鉄と硫黄を混合して，加熱してすべて反応させたものにうすい塩酸をかける<br>と，何という気体が発生するか。",
+                        "options": [
+                                    "塩化水素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素",
+                                    "硫化水素"
+                        ],
+                        "answer": 3,
+                        "explanation": "物質が酸素と結びつく化学変化を酸 さん 化 か という。"
+            },
+            {
+                        "id": 35,
+                        "topicIndex": 3,
+                        "group": "q_35",
+                        "question": "鉄と硫<br>い<br>黄<br>おう<br>を混合しただけのものに，うすい塩酸をかけると何という気体が発<br>生するか。",
+                        "options": [
+                                    "塩化水素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素",
+                                    "硫化水素"
+                        ],
+                        "answer": 0,
+                        "explanation": "光や熱を出す激しい酸化（酸素と結びつく化学反応）を燃 ねん 焼 しょう という。"
+            },
+            {
+                        "id": 36,
+                        "topicIndex": 3,
+                        "group": "q_36",
+                        "question": "鉄と硫<br>い<br>黄<br>おう<br>の混合物を加熱すると，何という物質ができるか。",
+                        "options": [
+                                    "酸化鉄",
+                                    "酸化銅",
+                                    "硫化鉄",
+                                    "硫化銅"
+                        ],
+                        "answer": 0,
+                        "explanation": "マグネシウムは空気中で火をつけると熱や光を出しながら燃焼し，白色の酸 化マグネシウムになる。"
+            },
+            {
+                        "id": 37,
+                        "topicIndex": 3,
+                        "group": "q_37",
+                        "question": "銀白色の鉄と黄色っぽい硫<br>い<br>黄<br>おう<br>を混ぜたものを加熱すると，何色の物質ができ<br>るか。",
+                        "options": [
+                                    "黄色",
+                                    "黒色",
+                                    "赤色",
+                                    "白色"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄と硫黄の混合物を加熱してできた硫 りゅう 化 か 鉄 てつ は黒色である。"
+            },
+            {
+                        "id": 38,
+                        "topicIndex": 3,
+                        "group": "q_38",
+                        "question": "化<br>か<br>学がく<br>式<br>しき<br>を用いて化学変化を表したものを何というか。",
+                        "options": [
+                                    "化学反応式",
+                                    "化学変化式",
+                                    "化学方程式"
+                        ],
+                        "answer": 0,
+                        "explanation": "化学式を使って化学変化のようすを表したものを化 か 学 がく 反 はん 応 のう 式 しき という。"
+            },
+            {
+                        "id": 39,
+                        "topicIndex": 3,
+                        "group": "q_39",
+                        "question": "化学反応式では，矢印の左右で原<br>げん<br>子<br>し<br>の種類や数が変化するか，変化しないか。",
+                        "options": [
+                                    "変化しない",
+                                    "変化する"
+                        ],
+                        "answer": 0,
+                        "explanation": "化学変化の前後では，原子の組み合わせが変わるが，原子の種類と数は変化 しない。"
+            },
+            {
+                        "id": 40,
+                        "topicIndex": 3,
+                        "group": "q_40",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，水の電気分解を正しく表したものはどれか。",
+                        "options": [
+                                    "H2O　→　H2　+　O",
+                                    "H2O　→　H2　+　O2",
+                                    "2 H2O　→　2 H2　+　O2",
+                                    "2 H2O　→　H2　+　2 O2",
+                                    "2 H2O　→　4 H　+　O2"
+                        ],
+                        "answer": 0,
+                        "explanation": "化学反応式は，まずは物質を日本語で表して式を考える。 水　→　水素　+　酸素 次に，日本語で表した物質を化 か 学 がく 式 しき で表す。 H2O　→　H2　+　O2 次に，反応前後の原 げん 子 し の数をあわせる。 2 H2O　→　2 H2　+　O2 今回の選択肢で，物質を正しい化学式で表しており，反応前後の原子の数も あっているのは③の化学反応式である。"
+            },
+            {
+                        "id": 41,
+                        "topicIndex": 3,
+                        "group": "q_41",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，炭素の燃焼を正しく表したものはどれか。",
+                        "options": [
+                                    "2 C　+　2 O　→　2 CO",
+                                    "C　+　O2 　→　CO2",
+                                    "C　+　2 O　→　CO2",
+                                    "C　+　O　→　CO"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭素（C）と酸素（O2）が反応して二酸化炭素（CO2）ができる。"
+            },
+            {
+                        "id": 42,
+                        "topicIndex": 3,
+                        "group": "q_42",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，酸化銀の分解を正しく表したものはどれか。",
+                        "options": [
+                                    "2 Ag2O　→　2 Ag　+　O2",
+                                    "Ag2O　→　Ag　+　O2",
+                                    "Ag2O　→　2 Ag　+　O2",
+                                    "2 Ag2O　→　4 Ag　+　O2"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銀（Ag2O）が分解して銀（Ag）と酸素（O2）ができる。反応前後の 酸素原子の数をそろえるために酸化銀を表すAg2O の左側に2 を書く。矢 印の左側で銀原子の数が4 個になるので，矢印の右側の銀を表すAg の左側 に4 を書く。"
+            },
+            {
+                        "id": 43,
+                        "topicIndex": 3,
+                        "group": "q_43",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，炭酸水素ナトリウムの分解を正しく表したものはどれか。",
+                        "options": [
+                                    "2 NaHCO3　→　Na2 CO3　+　2 H2O　+　CO2",
+                                    "2 NaHCO3　→　Na2 CO3　+　H2O　+　CO2",
+                                    "2 NaHCO3　→　Na2 CO3　+　H2O　+　2 CO2",
+                                    "2 NaHCO3　→　Na2 CO3　+　2 H2O　+　2 CO2"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭酸水素ナトリウム（NaHCO3）が分解して炭酸ナトリウム（Na2CO3）， 水（H2O），二酸化炭素（CO2）になる。矢印の左右に化 か 学 がく 式 しき をかくだけでは， 原 げん 子 し の数がそろわない。よって，矢印の左右でナトリウム原子の数をそろえ るために矢印の左側の炭酸水素ナトリウムの前に２を書くと，水素，酸素， 炭素原子は矢印の左右で数が等しくなる。"
+            },
+            {
+                        "id": 44,
+                        "topicIndex": 3,
+                        "group": "q_44",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，銅の酸化を正しく表したものはどれか。",
+                        "options": [
+                                    "2 Cu　+　2 O　→　2 CuO",
+                                    "Cu　+　O2　→　2 CuO",
+                                    "2 Cu　+　O2　→　2 CuO",
+                                    "Cu　+　O2　→　CuO"
+                        ],
+                        "answer": 0,
+                        "explanation": "銅（Cu）と酸素（O2）が結びついて酸化銅（CuO）ができる。矢印の左右 に化 か 学 がく 式 しき をかくだけでは，原 げん 子 し の数がそろわない。よって，酸素原子の数を そろえるために酸化銅の左側に大きく2 を書く。次に，銅原子の数をそろえ るために，銅を表すCu の左側に大きく2 を書く。"
+            },
+            {
+                        "id": 45,
+                        "topicIndex": 3,
+                        "group": "q_45",
+                        "question": "次の化<br>か<br>学がく<br>反はん<br>応のう<br>式<br>しき<br>で，水素と酸素の燃<br>ねん<br>焼<br>しょう<br>を正しく表したものはどれか。",
+                        "options": [
+                                    "H2　+　O2　→　2 H2 O",
+                                    "H2　+　O2　→　H2 O",
+                                    "2 H2　+　O2　→　2 H2 O",
+                                    "2 H2　+　2 O2　→　2 H2 O",
+                                    "H2　+　2 O2　→　2 H2 O"
+                        ],
+                        "answer": 0,
+                        "explanation": "水素（H2）と酸素（O2）から水（H2O）ができる。この反応は水の電気分 解と逆の反応である。矢印の左右に化 か 学 がく 式 しき をかくだけでは，原 げん 子 し の数がそろ わない。よって，酸素原子の数をそろえるために水分子の数を2 個にする。 次に，水素原子の数をそろえるために水素分子の数を2 個にする。"
+            },
+            {
+                        "id": 46,
+                        "topicIndex": 3,
+                        "group": "q_46",
+                        "question": "スチールウール（鉄）を加熱すると何ができるか。",
+                        "options": [
+                                    "酸化鉄",
+                                    "酸化銅",
+                                    "炭",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 0,
+                        "explanation": "空気中で鉄を燃やすと，鉄が空気中の酸素と結びついて酸 さん 化 か 鉄 てつ ができる。"
+            },
+            {
+                        "id": 47,
+                        "topicIndex": 3,
+                        "group": "q_47",
+                        "question": "スチールウール（鉄）を燃やしてできた酸化鉄の質量は，燃やす前と比べて<br>どうなるか。",
+                        "options": [
+                                    "減る",
+                                    "増える",
+                                    "変わらない"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄を燃やすと酸素と結びつくため，その分質量は増える。"
+            },
+            {
+                        "id": 48,
+                        "topicIndex": 3,
+                        "group": "q_48",
+                        "question": "マグネシウムや鉄を燃やしてできた物質は，燃やす前にそれぞれもっていた<br>性質を変わらずもっているといえるか。",
+                        "options": [
+                                    "いえない",
+                                    "いえる"
+                        ],
+                        "answer": 0,
+                        "explanation": "空気中でマグネシウムを燃やしてできた酸 さん 化 か マグネシウムや，鉄を燃やして できた酸 さん 化 か 鉄 てつ は，それぞれ燃やす前とは異なる物質で，燃やす前の性質をもっ ていない。例えば，鉄に塩酸を加えると水素が発生するが，酸化鉄に塩酸を 加えても水素は発生しないなど，酸化鉄は鉄の性質をもっていない。それ以 外にも酸化鉄は電気を通さない，金属光沢がないなど，鉄とは性質が異なる。"
+            },
+            {
+                        "id": 49,
+                        "topicIndex": 3,
+                        "group": "q_49",
+                        "question": "鉄が酸素と結びついて酸化鉄になるように，物質が酸素と結びつくことを何というか。",
+                        "options": [
+                                    "酸化",
+                                    "燃焼",
+                                    "硫化"
+                        ],
+                        "answer": 0,
+                        "explanation": "物質が酸素と結びつく化学変化を酸 さん 化 か という。"
+            },
+            {
+                        "id": 50,
+                        "topicIndex": 3,
+                        "group": "q_50",
+                        "question": "光や熱を出しながら激しく進む酸<br>さん<br>化<br>か<br>を何というか。",
+                        "options": [
+                                    "炎上",
+                                    "燃焼",
+                                    "分解"
+                        ],
+                        "answer": 1,
+                        "explanation": "光や熱を出す激しい酸化（酸素と結びつく化学反応）を燃 ねん 焼 しょう という。"
+            },
+            {
+                        "id": 51,
+                        "topicIndex": 3,
+                        "group": "q_51",
+                        "question": "マグネシウムを空気中で加熱すると，何という物質ができるか。",
+                        "options": [
+                                    "酸化マグネシウム",
+                                    "酸化銀",
+                                    "酸化鉄",
+                                    "酸化銅"
+                        ],
+                        "answer": 0,
+                        "explanation": "マグネシウムは空気中で火をつけると熱や光を出しながら燃焼し，白色の酸 化マグネシウムになる。"
+            },
+            {
+                        "id": 52,
+                        "topicIndex": 3,
+                        "group": "q_52",
+                        "question": "有機物は炭素と水素をふくむが，これを燃やすと何と何ができるか。",
+                        "options": [
+                                    "炭素，酸素",
+                                    "炭素，水",
+                                    "二酸化炭素，酸素",
+                                    "二酸化炭素，水",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "鉄と硫黄の混合物を加熱してできた硫 りゅう 化 か 鉄 てつ は黒色である。"
+            },
+            {
+                        "id": 53,
+                        "topicIndex": 4,
+                        "group": "q_53",
+                        "question": "酸化銅と炭素の粉末を混合して加熱すると気体が発生する。これを石灰水に<br>通すと石灰水はどうなったか。",
+                        "options": [
+                                    "青紫色になった",
+                                    "赤褐色ににごった",
+                                    "白くにごった",
+                                    "緑色になった"
+                        ],
+                        "answer": 2,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，発生した気体によって，石灰水が白く にごる。"
+            },
+            {
+                        "id": 54,
+                        "topicIndex": 4,
+                        "group": "q_54",
+                        "question": "酸化銅と炭素の粉末を混合して加熱すると気体が発生し，これは石灰水を白<br>くにごらせた。この気体は何か。",
+                        "options": [
+                                    "アンモニア",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 3,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，発生した気体によって石灰水は白くに ごる。これより，二酸化炭素が発生したことがわかる。"
+            },
+            {
+                        "id": 55,
+                        "topicIndex": 4,
+                        "group": "q_55",
+                        "question": "次の図のように，酸化銅と炭素の加熱を行う際，試験管の口を少し下げてお<br>くのはどのような理由からか。",
+                        "options": [
+                                    "酸化銅にまんべんなく火があたるようにするため。",
+                                    "実験によって発生した液体が逆流して試験管が割れるのを防ぐため。",
+                                    "石 せっ 灰 かい 水 すい が逆流して試験管が割れるのを防ぐため。",
+                                    "1"
+                        ],
+                        "answer": 1,
+                        "explanation": "加熱によって液体が発生すると，加熱部に液体が触れて，試験管が割れる可 能性があるので，それを防ぐために試験管の口を下げる。今回の実験では， 化学反応によって液体は発生しないが，炭素に吸収されていた水蒸気（水） が発生する場合があるので，試験管の口は下げておく必要がある。"
+            },
+            {
+                        "id": 56,
+                        "topicIndex": 5,
+                        "group": "q_56",
+                        "question": "次の図のように，酸化銅と炭素の加熱による実験を行った際，ガスバーナーの火を消す前にガラス管を石<br>せっ<br>灰<br>かい<br>水<br>すい<br>からとり出しておく必要があるが，それは<br>なぜか。<br><img src='Figs/q56.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "石灰水が逆流して試験管が割れるのを防ぐため。",
+                                    "試験管の中の物質が石灰水に入らないようにするため。",
+                                    "石灰水がそれ以上化学変化しないようにするため。",
+                                    "石灰水が沸とうするのを防ぐため。"
+                        ],
+                        "answer": 0,
+                        "explanation": "加熱した酸化銅を水素の中に入れると，水素が酸化銅の酸素をうばって水に なることから，水素は銅よりも酸素と結びつきやすいことがわかる。"
+            },
+            {
+                        "id": 57,
+                        "topicIndex": 5,
+                        "group": "q_57",
+                        "question": "次の図のような装置で実験を行った際，物質を加熱した後にピンチコックで<br>ゴム管をとめるのはどのような理由からか。<br><img src='Figs/q57.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "試験管内の物質がこぼれないようにするため。",
+                                    "試験管内の物質が酸素と結びつかないようにするため。",
+                                    "試験管内の物質を早く冷やすため。",
+                                    "試験管内の熱を逃さないため。"
+                        ],
+                        "answer": 1,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱した後は，試験管に残った銅が再び酸素と結び ついて酸化銅にもどることを防ぐために，ピンチコックでゴム管をとめる。"
+            },
+            {
+                        "id": 58,
+                        "topicIndex": 5,
+                        "group": "q_58",
+                        "question": "酸化銅と炭素の混合物を加熱した後に残る物質は何色をしているか。",
+                        "options": [
+                                    "金色",
+                                    "銀色",
+                                    "赤色",
+                                    "白色"
+                        ],
+                        "answer": 2,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，酸化銅から酸素がうばわれて銅が残る。 銅は赤色の物質である。"
+            },
+            {
+                        "id": 59,
+                        "topicIndex": 5,
+                        "group": "q_59",
+                        "question": "酸化銅と炭素の混合物を過不足なく加熱すると，後に残る物質は何か。",
+                        "options": [
+                                    "砂糖",
+                                    "酸化銅",
+                                    "食塩",
+                                    "炭素",
+                                    "銅"
+                        ],
+                        "answer": 1,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を過不足なく加熱すると，酸化銅から酸素がうばわれ て銅が残る。炭素は酸素と結びついて二酸化炭素になる。"
+            },
+            {
+                        "id": 60,
+                        "topicIndex": 5,
+                        "group": "q_60",
+                        "question": "酸化銅と炭素の粉末を混合して加熱すると，何という気体が発生するか。",
+                        "options": [
+                                    "水素",
+                                    "酸素",
+                                    "窒素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 3,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，酸化銅から酸素がうばわれて銅が残る。 炭素は酸素と結びついて二酸化炭素になる。"
+            },
+            {
+                        "id": 61,
+                        "topicIndex": 5,
+                        "group": "q_61",
+                        "question": "酸化物から酸素をとり除く化学変化を何というか。",
+                        "options": [
+                                    "還元",
+                                    "酸化",
+                                    "燃焼",
+                                    "分解"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，酸化銅から酸素がうばわれ銅が残る。 このように，物質から酸素がとり除かれる化学変化を還 かん 元 げん という。"
+            },
+            {
+                        "id": 62,
+                        "topicIndex": 5,
+                        "group": "q_62",
+                        "question": "酸化銅と炭素の混合物を加熱すると銅を取り出すことができるのは，還<br>かん<br>元<br>げん<br>と<br>酸化のどちらによるものか。",
+                        "options": [
+                                    "還元",
+                                    "酸化"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，酸化銅は還元されて銅になる。"
+            },
+            {
+                        "id": 63,
+                        "topicIndex": 5,
+                        "group": "q_63",
+                        "question": "スチールウールを燃やして手で触ってみるとぼろぼろとくずれるのは，ス<br>チールウールが（　　）によって酸化鉄になったからである。（　　）にあ<br>てはまる言葉を答えよ。",
+                        "options": [
+                                    "還元",
+                                    "酸化 3"
+                        ],
+                        "answer": 1,
+                        "explanation": "スチールウール（鉄）を加熱すると，空気中の酸素と結びついて酸化鉄にな る。"
+            },
+            {
+                        "id": 64,
+                        "topicIndex": 5,
+                        "group": "q_64",
+                        "question": "酸化銅と炭素の混合物を加熱すると，固体としては酸化銅が還<br>かん<br>元<br>げん<br>されて銅が<br>残り，気体としては二酸化炭素が発生するが，これは炭素に何という化学変<br>化が起こってできたものか。",
+                        "options": [
+                                    "酸化",
+                                    "蒸発",
+                                    "燃焼",
+                                    "分解"
+                        ],
+                        "answer": 0,
+                        "explanation": "還元が起こるとき，還元された物質から酸素をうばった物質は酸 さん 化 か されるの で，酸化と還元は同時に起こる。"
+            },
+            {
+                        "id": 65,
+                        "topicIndex": 5,
+                        "group": "q_65",
+                        "question": "次の酸化銅と炭素の化学反応式について，（　　）にあてはまるものを次か<br>ら1 つ選べ。<br>2 CuO　+　C　→　（　　　）　+　CO2",
+                        "options": [
+                                    "2 Cu",
+                                    "2 Cu2",
+                                    "Cu",
+                                    "Cu2"
+                        ],
+                        "answer": 2,
+                        "explanation": "酸化銅が還 かん 元 げん されて銅になり，炭素が酸 さん 化 か されて二酸化炭素になる酸化還元 反応が起きている。このときの化学反応式は以下になる。 2 CuO　+　C　→　2 Cu　+　CO2"
+            },
+            {
+                        "id": 66,
+                        "topicIndex": 5,
+                        "group": "q_66",
+                        "question": "次の化学反応式のうち，酸化銅と水素の反応を正しく表したものを次から1<br>つ選べ。",
+                        "options": [
+                                    "CuO　+　H2　→　Cu　+　H2O",
+                                    "2 CuO　+　2 H2　→　Cu2　+　2 H2O",
+                                    "4 CuO　+　2 H2　→　4 Cu　+　O2　+　2 H2O",
+                                    "2 CuO　+　H2　→　Cu　+　Cu(OH)2"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銅が還 かん 元 げん されて銅になり，水素が酸 さん 化 か されて水になる酸化還元反応が起 きている。このときの化学反応式は以下になる。 CuO　+　H2　→　Cu　+　H2O"
+            },
+            {
+                        "id": 67,
+                        "topicIndex": 5,
+                        "group": "q_67",
+                        "question": "酸化銅と水素の反応で銅と水ができることから，銅と水素のどちらの方が酸<br>素と結びつきやすいといえるか。",
+                        "options": [
+                                    "銅",
+                                    "水素"
+                        ],
+                        "answer": 1,
+                        "explanation": "加熱した酸化銅を水素の中に入れると，水素が酸化銅の酸素をうばって水に なることから，水素は銅よりも酸素と結びつきやすいことがわかる。"
+            },
+            {
+                        "id": 68,
+                        "topicIndex": 5,
+                        "group": "q_68",
+                        "question": "製鉄所では，鉄鉱石にコークス（炭素）や石灰石を混ぜて高温で加熱し，鉄をとり出す。 このとき還<br>かん<br>元<br>げん<br>される物質は何か。",
+                        "options": [
+                                    "酸化鉄",
+                                    "酸化銅",
+                                    "水素",
+                                    "炭素"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱した後は，試験管に残った銅が再び酸素と結び ついて酸化銅にもどることを防ぐために，ピンチコックでゴム管をとめる。"
+            },
+            {
+                        "id": 69,
+                        "topicIndex": 5,
+                        "group": "q_69",
+                        "question": "次の化学反応式のうち，マグネシウムと二酸化炭素の反応を正しく表したも<br>のはどれか。",
+                        "options": [
+                                    "Mg　+　CO2　→　MgC　+　O2",
+                                    "Mg　+　CO2　→　MgCO2",
+                                    "2 Mg　+　CO2　→　2 MgO　+　C",
+                                    "Mg　+　CO2　→　MgO2　+　C",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸化銅と炭素の混 こん 合 ごう 物 ぶつ を加熱すると，酸化銅から酸素がうばわれて銅が残る。 銅は赤色の物質である。"
+            },
+            {
+                        "id": 70,
+                        "topicIndex": 6,
+                        "group": "q_70",
+                        "question": "使い捨てカイロにも用いられる仕組みで，鉄粉と活性炭・食塩水を混ぜると<br>発はつ<br>熱<br>ねつ<br>反はん<br>応のう<br>が起こるが，これはどのような化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>か。",
+                        "options": [
+                                    "食塩が分解した",
+                                    "鉄が還元される",
+                                    "鉄が酸化される",
+                                    "鉄が食塩水を分解する"
+                        ],
+                        "answer": 2,
+                        "explanation": "鉄粉と活性炭の混合物に食塩水を加えると，鉄が酸化される化学変化が起こ る。"
+            },
+            {
+                        "id": 71,
+                        "topicIndex": 6,
+                        "group": "q_71",
+                        "question": "鉄粉と活性炭の混合物に食塩水を混ぜて起こる化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>では，周囲の温度は<br>どうなるか。",
+                        "options": [
+                                    "下がる",
+                                    "上がる"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄粉と活性炭の混合物に食塩水を加えると，鉄が酸化する化 か 学 がく 変 へん 化 か が起こる。 この化学変化では，熱が周囲に放 ほう 出 しゅつ され，周囲の温度が上昇する。"
+            },
+            {
+                        "id": 72,
+                        "topicIndex": 6,
+                        "group": "q_72",
+                        "question": "鉄粉と活性炭の混合物に食塩水を混ぜたとき，周囲の温度に変化が起こるの<br>は，化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>によって物質が熱を周囲からうばったからか，もしくは熱を周<br>囲に出したからか。",
+                        "options": [
+                                    "熱を周囲からうばったから",
+                                    "熱を周囲に出したから"
+                        ],
+                        "answer": 1,
+                        "explanation": "鉄粉と活性炭の混合物に食塩水を加えると，鉄が酸化する化学変化が起こる。 この化学変化では，熱が周囲に放 ほう 出 しゅつ され，周囲の温度が上昇する。"
+            },
+            {
+                        "id": 73,
+                        "topicIndex": 6,
+                        "group": "q_73",
+                        "question": "まわりに熱を発生し，温度が上がる化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>を何というか。",
+                        "options": [
+                                    "吸熱反応",
+                                    "酸化",
+                                    "電気分解",
+                                    "熱分解",
+                                    "発熱反応"
+                        ],
+                        "answer": 4,
+                        "explanation": "化学変化が起こるとき，熱を周囲に放 ほう 出 しゅつ して，周囲の温度が上がる化学変化 を発 はつ 熱 ねつ 反 はん 応 のう という。"
+            },
+            {
+                        "id": 74,
+                        "topicIndex": 6,
+                        "group": "q_74",
+                        "question": "塩化アンモニウムと水酸化バリウムを混ぜ合わせて水を加えると，温度はど<br>うなるか。",
+                        "options": [
+                                    "下がる",
+                                    "上がる"
+                        ],
+                        "answer": 0,
+                        "explanation": "水酸化バリウムと塩化アンモニウムを反応させると塩化バリウム，水，アン モニアが発生し，温度が下がる。"
+            },
+            {
+                        "id": 75,
+                        "topicIndex": 6,
+                        "group": "q_75",
+                        "question": "塩化アンモニウムと水酸化バリウムの混合物に水を混ぜたとき，周囲の温度に変化が起こるのは，化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>によって物質が熱を周囲からうばったからか，<br>もしくは熱を周囲に出したからか。",
+                        "options": [
+                                    "熱を周囲からうばったから",
+                                    "熱を周囲に出したから"
+                        ],
+                        "answer": 0,
+                        "explanation": "水酸化バリウムと塩化アンモニウムが反応して，塩化バリウム，水，アンモ ニアが発生する。この化 か 学 がく 変 へん 化 か では，物質が周囲から熱をうばうため，周囲 の温度が下がる。"
+            },
+            {
+                        "id": 76,
+                        "topicIndex": 6,
+                        "group": "q_76",
+                        "question": "まわりから熱を吸収し，温度が下がる化学変化を何というか。",
+                        "options": [
+                                    "還元",
+                                    "吸熱反応",
+                                    "酸化",
+                                    "熱分解",
+                                    "発熱反応"
+                        ],
+                        "answer": 1,
+                        "explanation": "化学変化のときに，周囲から熱をうばう化学変化を吸 きゅう 熱 ねつ 反 はん 応 のう という。吸熱反 応では，熱が物質にうばわれるので周囲の温度は下がる。"
+            },
+            {
+                        "id": 77,
+                        "topicIndex": 6,
+                        "group": "q_77",
+                        "question": "ビーカーに硫酸と水酸化バリウム水溶液を混ぜて反応させると，ビーカーに<br>白い沈<br>ちん<br>殿でん<br>ができる。この物質は何か。",
+                        "options": [
+                                    "塩化水素",
+                                    "塩酸",
+                                    "硫化バリウム",
+                                    "硫酸バリウム"
+                        ],
+                        "answer": 3,
+                        "explanation": "硫 りゅう 酸 さん と水酸化バリウムが反応すると，硫酸バリウムという物質ができる。硫 酸バリウムは水にとけにくいので，白い沈殿となる。"
+            },
+            {
+                        "id": 78,
+                        "topicIndex": 6,
+                        "group": "q_78",
+                        "question": "次の化学反応式のうち，硫酸と塩化バリウムの反応を正しく表したものはど<br>れか。",
+                        "options": [
+                                    "H2SO4　+　BaCl2　→　2 HCl　+　Ba (HSO4)2",
+                                    "H2SO4　+　BaCl2　→　H2　+　Cl2　+　BaSO4",
+                                    "H2SO4　+　BaCl2　→　2 HCl　+　BaSO4",
+                                    "H2SO4　+　BaCl2　→　2 HCl　+　2 O2　+　BaS"
+                        ],
+                        "answer": 0,
+                        "explanation": "硫 りゅう 酸 さん と塩化バリウムが反応すると，塩酸と硫酸バリウムという物質ができる。 塩酸は塩化水素の水溶液，硫酸バリウムは水にとけにくいので，白い沈 ちん 殿 でん と なる。 化学反応式は以下のようになる。 H2SO4　+　BaCl2　→　2 HCl　+　BaSO4"
+            },
+            {
+                        "id": 79,
+                        "topicIndex": 6,
+                        "group": "q_79",
+                        "question": "次の化学反応式のうち，炭酸ナトリウムと塩化カルシウムの反応を正しく表<br>したものはどれか。",
+                        "options": [
+                                    "Na2CO3　+　CaCl2　→　2 NaCl　+　CaCO3",
+                                    "2 NaHCO3　+　CaCl2　→　2 NaCl　+　Ca (HCO3)2",
+                                    "Na2CO3　+　CaCl2　+　H2O　→　Na2O　+　2 HCl　+　CaCO3",
+                                    "Na2CO3　+　CaCl2　→　2 Na　+　CCl2　+　CaO"
+                        ],
+                        "answer": 0,
+                        "explanation": "炭酸ナトリウムと塩化カルシウムが反応すると，塩化ナトリウムと炭酸カル シウムが発生する。発生した炭酸カルシウムは白い沈 ちん 殿 でん である。なお，②の NaHCO3 は炭酸水素ナトリウムなので，炭酸ナトリウムと間違わないよう に注意。"
+            },
+            {
+                        "id": 80,
+                        "topicIndex": 6,
+                        "group": "q_80",
+                        "question": "炭酸水素ナトリウムにうすい塩酸を加えると，何という気体が発生するか。",
+                        "options": [
+                                    "アンモニア",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 3,
+                        "explanation": "塩酸と炭酸水素ナトリウムが反応すると，二酸化炭素，水，塩化ナトリウム ができる。このうち，気体は二酸化炭素である。"
+            },
+            {
+                        "id": 81,
+                        "topicIndex": 6,
+                        "group": "q_81",
+                        "question": "炭酸水素ナトリウムとうすい塩酸を容器に入れ，ふたをして密閉し全体の質<br>量をはかった。次に，うすい塩酸を炭酸水素ナトリウムに注ぎ，気体の発生が終わったあとで，ふたをしたまま全体の質量をはかった。このときの質量は反応前に比べてどうなるか。",
+                        "options": [
+                                    "減少する",
+                                    "増加する",
+                                    "変わらない"
+                        ],
+                        "answer": 0,
+                        "explanation": "鉄鉱石にふくまれる酸化鉄は炭素によって還元されて鉄になった。"
+            },
+            {
+                        "id": 82,
+                        "topicIndex": 7,
+                        "group": "q_82",
+                        "question": "炭酸水素ナトリウムとうすい塩酸を容器に入れ，ふたをして密閉し全体の質<br>量をはかった。次に，うすい塩酸を炭酸水素ナトリウムに注ぎ，気体の発生が終わったあとで，容器のふたを開けてしばらくしてから質量をはかった。<br>このときの質量は反応前に比べてどうなるか。",
+                        "options": [
+                                    "減少する",
+                                    "増加する",
+                                    "変わらない"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩酸と炭酸水素ナトリウムが反応すると，二酸化炭素，水，塩化ナトリウム ができる。容器のふたを開けると，気体の二酸化炭素は空気中へ出ていくの で，その分全体の質量が減少する。"
+            },
+            {
+                        "id": 83,
+                        "topicIndex": 7,
+                        "group": "q_83",
+                        "question": "化<br>か<br>学がく<br>変<br>へん<br>化<br>か<br>が起こっても，反応の前後で物質全体の質量は変わらないことを，<br>何の法則というか。",
+                        "options": [
+                                    "エネルギー保存の法則",
+                                    "オームの法則",
+                                    "フックの法則",
+                                    "質量保存の法則"
+                        ],
+                        "answer": 3,
+                        "explanation": "化学変化の前後で反応にかかわる物質全体の質量が変化しないことを質量保 存の法則という。"
+            },
+            {
+                        "id": 84,
+                        "topicIndex": 7,
+                        "group": "q_84",
+                        "question": "銅や鉄，マグネシウムなどを空気中で加熱すると，ある物質と結びついて別の物質に変化する。ある物質とは何か。",
+                        "options": [
+                                    "酸素",
+                                    "水素",
+                                    "窒素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 0,
+                        "explanation": "金属を空気中で加熱すると，空気中の酸素と結びついて酸化物になる。"
+            },
+            {
+                        "id": 85,
+                        "topicIndex": 7,
+                        "group": "q_85",
+                        "question": "銅や鉄，マグネシウムなどを空気中で加熱して酸化させるとき，加熱する回<br>数をふやしていくと，できる物質の質量はどう変化していくか。",
+                        "options": [
+                                    "加熱する回数に応じてどんどんふえていく。",
+                                    "ある一定の質量に達すると，その後はふえなくなる。"
+                        ],
+                        "answer": 1,
+                        "explanation": "銅，マグネシウム，鉄などの金属を空気中で加熱すると，金属に空気中の酸 素が結びついて，質量が増えていくが，質量が増え続けることはなく，やが て質量は一定になる。このことから，一定量の金属と結びつく酸素の質量に は限界があることがわかる。"
+            },
+            {
+                        "id": 86,
+                        "topicIndex": 7,
+                        "group": "q_86",
+                        "question": "次のグラフは，銅の粉末を空気中で加熱してできた化合物の質量をまとめた<br>ものである。1.2 g の銅を加熱したときにできる化合物の質量は何g か。",
+                        "options": [
+                                    "0.3 g",
+                                    "1.0 g",
+                                    "1.5 g",
+                                    "2.0 g"
+                        ],
+                        "answer": 0,
+                        "explanation": "グラフから，銅の質量が1.2 g のとき，加熱してできた化合物の質量は1.5 g であることがわかる。"
+            },
+            {
+                        "id": 87,
+                        "topicIndex": 7,
+                        "group": "q_87",
+                        "question": "次のグラフをみると，銅の質量と，それに結びつく酸素の質量とはどのよう<br>な関係があるといえるか。",
+                        "options": [
+                                    "銅の質量にかかわらず，酸素の質量は常に一定になる。",
+                                    "反比例の関係",
+                                    "比例の関係"
+                        ],
+                        "answer": 1,
+                        "explanation": "銅の質量と，銅と結びついた酸素の質量の関係をグラフに表すと，原点を通 る直線になる。酸素の質量は，グラフの各点から次のように求めることがで きる。 酸素の質量= 化合物の質量- 銅の質量 グラフ上の各銅の質量について，酸素の質量を求めると，以下のようになる。 銅0.4 〔g〕のとき，酸素の質量= 0.5 - 0.4 = 0.1 〔g〕 銅0.8 〔g〕のとき，酸素の質量= 1.0 - 0.8 = 0.2 〔g〕 銅1.2 〔g〕のとき，酸素の質量= 1.5 -1.2 = 0.3 〔g〕 銅1.6 〔g〕のとき，酸素の質量= 2.0 -1.6 = 0.4 〔g〕 銅2.0 〔g〕のとき，酸素の質量= 2.5 - 2.0 = 0.5 〔g〕 これをもとに，銅の質量を横軸に，酸素の質量を縦軸にとってグラフを書い てみると，原点を通る直線となる。 よって，銅の質量と，銅と結びつく酸素の質量の間には比例の関係があるこ とがわかる。 ※手元にグラフ用紙などを用意して，実際にかいてみると確認できてよい。"
+            },
+            {
+                        "id": 88,
+                        "topicIndex": 7,
+                        "group": "q_88",
+                        "question": "次のグラフから，1.6 g の銅を加熱してできた化合物の質量は2.0 g なので，<br>2.0 - 1.6 = 0.4 g の酸素と結びついたことがわかる。ここから，銅と酸素が<br>何：何の質量の割合で結びつくか，最も簡単な整数の比で表せ。",
+                        "options": [
+                                    "3：1",
+                                    "3：2",
+                                    "4：1",
+                                    "4：5"
+                        ],
+                        "answer": 2,
+                        "explanation": "問題文より，1.6 g の銅に0.4 g の酸素が結びついたことがわかるので， 銅：酸素=1.6：0.4 = 4：1"
+            },
+            {
+                        "id": 89,
+                        "topicIndex": 7,
+                        "group": "q_89",
+                        "question": "0.6 g のマグネシウムを空気中ですべて加熱すると1.0 g の酸化マグネシウムができた。マグネシウムと酸素は何：何の質量の割合で結びつくか，最も簡<br>単な整数の比で表せ。",
+                        "options": [
+                                    "3：2",
+                                    "3：5",
+                                    "4：1",
+                                    "4：5"
+                        ],
+                        "answer": 0,
+                        "explanation": "マグネシウムと結びついた酸素の質量は，1.0- 0.6 = 0.4 〔g〕よって，マグ ネシウム：酸素 = 0.6：0.4 = 3：2"
+            },
+            {
+                        "id": 90,
+                        "topicIndex": 7,
+                        "group": "q_90",
+                        "question": "1.5 g のマグネシウムを空気中ですべて加熱すると2.5 g の酸化マグネシウムができた。マグネシウムと酸化マグネシウムの質量の割合は何：何になるか，<br>最も簡単な整数の比で表せ。",
+                        "options": [
+                                    "3：2",
+                                    "3：5",
+                                    "4：1",
+                                    "4：5"
+                        ],
+                        "answer": 1,
+                        "explanation": "マグネシウムと酸化マグネシウムの比をとり，簡単な整数の比に直せばよい。 マグネシウム：酸化マグネシウム = 1.5：2.5 = 3：5"
+            },
+            {
+                        "id": 91,
+                        "topicIndex": 7,
+                        "group": "q_91",
+                        "question": "銅と酸素は，銅：酸素= 4：1 の質量の比で反応し，マグネシウムと酸素は，<br>マグネシウム：酸素= 3：2 の質量の比で反応する。ここから，同じ質量の<br>酸素と結びつく銅とマグネシウムの質量の比を最も簡単な整数の比で表せ。",
+                        "options": [
+                                    "2：1",
+                                    "3：1",
+                                    "4：3",
+                                    "8：3 4"
+                        ],
+                        "answer": 3,
+                        "explanation": "銅：酸素= 4：1，マグネシウム：酸素= 3：2 であるので，酸素の比を同じ にして比較するために，銅：酸素= 8：2 とおくと， 銅：酸素：マグネシウム= 8：2：3 となり，銅：マグネシウム= 8：3 となる。"
+            },
+            {
+                        "id": 92,
+                        "topicIndex": 8,
+                        "group": "q_92",
+                        "question": "塩化銅水<br>すい<br>溶<br>よう<br>液<br>えき<br>の電気分解を表した化学反応式はどれか，正しいものを選べ。",
+                        "options": [
+                                    "CuCl2　→　2 Cu　+　Cl",
+                                    "CuCl2　→　Cu　+　Cl2",
+                                    "CuCl2　→　2 Cu　+　2 Cl2",
+                                    "CuCl2　→　Cu　+　2 Cl"
+                        ],
+                        "answer": 1,
+                        "explanation": "塩化銅水 すい 溶 よう 液 えき に電流を流すと，塩化銅が銅と塩素に分解される反応が起きる。 この反応を化学反応式で表すと以下になる。 CuCl2　→　Cu　+　Cl2"
+            },
+            {
+                        "id": 93,
+                        "topicIndex": 8,
+                        "group": "q_93",
+                        "question": "塩酸の電気分解で陽<br>よう<br>極<br>きょく<br>から発生する気体はどのような性質をもつか，次の中<br>から一つ選べ。",
+                        "options": [
+                                    "水に非常にとけやすい",
+                                    "無色",
+                                    "無臭",
+                                    "空気より軽い"
+                        ],
+                        "answer": 0,
+                        "explanation": "陽極から発生する気体は塩素である。塩素は空気より重く，黄緑色で刺激臭 があり，水に非常によくとけるという性質がある。"
+            },
+            {
+                        "id": 94,
+                        "topicIndex": 8,
+                        "group": "q_94",
+                        "question": "塩酸の電気分解で陽<br>よう<br>極<br>きょく<br>側に発生するのは何か。",
+                        "options": [
+                                    "塩化水素",
+                                    "塩素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 1,
+                        "explanation": "塩酸に電流を流すと，電気分解によって，塩化水素中の塩素が陽極に集まり， 塩素の気体が発生する。"
+            },
+            {
+                        "id": 95,
+                        "topicIndex": 8,
+                        "group": "q_95",
+                        "question": "塩酸の電気分解で陰<br>いん<br>極<br>きょく<br>側に発生するのは何か。",
+                        "options": [
+                                    "アンモニア",
+                                    "塩素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 3,
+                        "explanation": "塩酸に電流を流すと，電気分解によって，塩化水素中の水素が陰極に集まり， 水素の気体が発生する。"
+            },
+            {
+                        "id": 96,
+                        "topicIndex": 8,
+                        "group": "q_96",
+                        "question": "塩酸の電気分解で，赤インクで着色した水に入れると，色がうすくなるのは<br>どちらの極側からとった液か。",
+                        "options": [
+                                    "陰極",
+                                    "陽極 2"
+                        ],
+                        "answer": 1,
+                        "explanation": "塩酸の電気分解によって陽極に発生する塩素には，においがあり，漂白作用 がある。"
+            },
+            {
+                        "id": 97,
+                        "topicIndex": 8,
+                        "group": "q_97",
+                        "question": "次の図とその説明文から，A・B それぞれが何か答えなさい。<br>Ａ：B のまわりを回っている，－<br>マイナスの電気をもつもの<br>Ｂ：原子の中心に1 個ある，＋<br>プラスの電気をもつもの",
+                        "options": [
+                                    "A：原子核　B：電子",
+                                    "A：中性子　B：原子核",
+                                    "A：中性子　B：電子",
+                                    "A：電子　B：原子核"
+                        ],
+                        "answer": 3,
+                        "explanation": "A は電 でん 子 し 。B は原 げん 子 し 核 かく 。"
+            },
+            {
+                        "id": 98,
+                        "topicIndex": 8,
+                        "group": "q_98",
+                        "question": "次の図は，水素原子の構造を表したものである。これを見て，B は何個の陽<br>よう<br>子<br>し<br>からできているとわかるか。",
+                        "options": [
+                                    "1 個",
+                                    "2 個",
+                                    "3 個",
+                                    "4 個 Ａ 陽子 Ｂ Ａ 陽子 Ｂ",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "水素原子の原 げん 子 し 核 かく の中には，陽子が1 個ある。原子核の中の陽子の数は，原 子の種類（元素）によって決まっている。"
+            },
+            {
+                        "id": 99,
+                        "topicIndex": 9,
+                        "group": "q_99",
+                        "question": "次の図のA・B はそれぞれ電気を帯びている。＋<br>プラスの電気を帯びているのは<br>どちらか。",
+                        "options": [
+                                    "A",
+                                    "B"
+                        ],
+                        "answer": 0,
+                        "explanation": "アルカリ性の水溶液にBTB 溶液を加えると，青色になる。"
+            },
+            {
+                        "id": 100,
+                        "topicIndex": 9,
+                        "group": "q_100",
+                        "question": "同じ元素でも中<br>ちゅう<br>性<br>せい<br>子<br>し<br>（電気を持たない粒）の数が異なる原子を何というか。<br><img src='Figs/q100.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "同位体",
+                                    "同素体"
+                        ],
+                        "answer": 0,
+                        "explanation": "アルカリ性の水溶液にフェノールフタレイン溶液を加えると赤色に変化す る。"
+            },
+            {
+                        "id": 101,
+                        "topicIndex": 9,
+                        "group": "q_101",
+                        "question": "＋<br>プラスの電気を帯びたイオンを何というか。<br><img src='Figs/q101.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "陰イオン",
+                                    "陽イオン"
+                        ],
+                        "answer": 0,
+                        "explanation": "硫酸は酸性の水溶液である。なお，エタノール水溶液は中性，石灰水とアン モニア水はアルカリ性である。"
+            },
+            {
+                        "id": 102,
+                        "topicIndex": 9,
+                        "group": "q_102",
+                        "question": "－<br>マイナスの電気を帯びたイオンを何というか。<br><img src='Figs/q102.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "陰イオン",
+                                    "陽イオン"
+                        ],
+                        "answer": 0,
+                        "explanation": "原子が電子を受けとると，電子の数が陽子の数より多くなり，全体で－の電 気を帯びた陰イオンになる。"
+            },
+            {
+                        "id": 103,
+                        "topicIndex": 9,
+                        "group": "q_103",
+                        "question": "次のうち，塩化物イオンを正しく表したものはどれか。",
+                        "options": [
+                                    "OH－",
+                                    "Cl－",
+                                    "SO4 2 －",
+                                    "Cu2 ＋"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩化物イオンは，塩素原子が電子を1 個受けとった状態で，化学式はCl－で ある。"
+            },
+            {
+                        "id": 104,
+                        "topicIndex": 9,
+                        "group": "q_104",
+                        "question": "次のうち，水酸化物イオンを正しく表したものはどれか。",
+                        "options": [
+                                    "Cu2 ＋",
+                                    "SO4 2 －",
+                                    "Cl－",
+                                    "OH－"
+                        ],
+                        "answer": 0,
+                        "explanation": "水酸化物イオンの化学式は，OH－である。"
+            },
+            {
+                        "id": 105,
+                        "topicIndex": 9,
+                        "group": "q_105",
+                        "question": "次のうち，銅イオンを正しく表したものはどれか。",
+                        "options": [
+                                    "Cu2 ＋",
+                                    "SO4 2 －",
+                                    "Cl－",
+                                    "OH－"
+                        ],
+                        "answer": 0,
+                        "explanation": "銅イオンは，銅原子が電子を2 個放出した状態で，化学式はCu2 ＋である。"
+            },
+            {
+                        "id": 106,
+                        "topicIndex": 9,
+                        "group": "q_106",
+                        "question": "次のうち，硫酸イオンを正しく表したものはどれか。",
+                        "options": [
+                                    "Cl－",
+                                    "Cu2 ＋",
+                                    "SO4 2 －",
+                                    "OH－"
+                        ],
+                        "answer": 2,
+                        "explanation": "硫酸イオンの化学式は，SO4 2 －である。"
+            },
+            {
+                        "id": 107,
+                        "topicIndex": 9,
+                        "group": "q_107",
+                        "question": "電解質が水に溶けて，陽<br>よう<br>イオンと陰<br>いん<br>イオンに分かれることを（　　）という。<br>（　　）にあてはまる言葉を答えよ。",
+                        "options": [
+                                    "電解",
+                                    "電気分解",
+                                    "電離 Ａ 陽子 Ｂ 2"
+                        ],
+                        "answer": 2,
+                        "explanation": "電解質の水 すい 溶 よう 液 えき では物質が陽イオンと陰イオンに電 でん 離 り している。"
+            },
+            {
+                        "id": 108,
+                        "topicIndex": 9,
+                        "group": "q_108",
+                        "question": "非電解質は水に溶けると，イオンに分かれるか。",
+                        "options": [
+                                    "分かれない",
+                                    "分かれる",
+                                    "分かれる物質と分かれない物質がある"
+                        ],
+                        "answer": 0,
+                        "explanation": "水にとけても，陽イオンと陰イオンに分かれない物質を非電解質という。例 えば，非電解質である砂糖は，陽イオンと陰イオンに分かれず，砂糖の粒子 が目に見えないほど小さな粒子になり，水分子の間に広がっている。"
+            },
+            {
+                        "id": 109,
+                        "topicIndex": 9,
+                        "group": "q_109",
+                        "question": "塩化ナトリウムが水にとけて，イオンになるときのようすを表した次の式の<br>（　　）にあてはまる化学式を1 つ選べ。<br>NaCl　→　（　　）　＋　Cl－",
+                        "options": [
+                                    "Na＋",
+                                    "Na2 ＋",
+                                    "Na－",
+                                    "Na2 －"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩化ナトリウムは水にとけると，ナトリウムイオン（Na＋）と塩化物イオ ン（Cl－）に電 でん 離 り する。 イオンになるときの式は以下のようになる。 NaCl　→　Na＋　+　Cl－"
+            },
+            {
+                        "id": 110,
+                        "topicIndex": 9,
+                        "group": "q_110",
+                        "question": "塩化水素が水にとけて，イオンになるときのようすを表した次の式の（　　）にあてはまる化学式を1 つ選べ。<br>HCl　→　H＋　+　（　　）",
+                        "options": [
+                                    "Cl2 ＋",
+                                    "Cl＋",
+                                    "Cl2 －",
+                                    "Cl－"
+                        ],
+                        "answer": 3,
+                        "explanation": "塩化水素は水にとけると，水素イオン（H＋）と塩化物イオン（Cl－）に電 でん 離 り する。 イオンになるときの式は以下のようになる。 HCl　→　H＋　+　Cl－"
+            },
+            {
+                        "id": 111,
+                        "topicIndex": 9,
+                        "group": "q_111",
+                        "question": "水酸化ナトリウムが水にとけて，イオンになるときのようすを表した次の式の（　　）にあてはまる化学式を1 つ選べ。<br>NaOH　→　Na＋　+　（　　）",
+                        "options": [
+                                    "HO2 －",
+                                    "OH2 －",
+                                    "OH－",
+                                    "HO－"
+                        ],
+                        "answer": 2,
+                        "explanation": "水酸化ナトリウム（NaOH）は，ナトリウムイオン（Na＋）と水酸化物イオ ン（OH-）に電 でん 離 り する。 イオンになるときの式は以下のようになる。 NaOH　→　Na＋　+　OH－"
+            },
+            {
+                        "id": 112,
+                        "topicIndex": 9,
+                        "group": "q_112",
+                        "question": "塩化銅水<br>すい<br>溶<br>よう<br>液<br>えき<br>に電流を流したときの，陽極で起こる塩化物イオンの反応につ<br>いて正しい記述を選べ。",
+                        "options": [
+                                    "電子を2 個受けとって塩素になる。",
+                                    "電子を2 個失って塩素になる。",
+                                    "電子を1 個失って塩素原子になり，塩素原子が2 個結びついて塩素にな る。",
+                                    "電子を1 個受けとって塩素原子になり，塩素原子が2 個結びついて塩素 になる。"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩化銅水溶液に電流を流すと，陰 いん イオンである塩化物イオンが陽極に移動し， 陽極で電子を1 個放出して塩素原子になり，塩素原子が2 個結びついて塩素 分子になる。"
+            },
+            {
+                        "id": 113,
+                        "topicIndex": 9,
+                        "group": "q_113",
+                        "question": "塩化水素の水<br>すい<br>溶<br>よう<br>液<br>えき<br>は青色リトマス紙を何色に変えるか。",
+                        "options": [
+                                    "黄色",
+                                    "赤色",
+                                    "白色",
+                                    "緑色"
+                        ],
+                        "answer": 1,
+                        "explanation": "酸性の水溶液は，青色リトマス紙の色を赤色に変える。"
+            },
+            {
+                        "id": 114,
+                        "topicIndex": 9,
+                        "group": "q_114",
+                        "question": "緑色に調整したBTB 溶<br>よう<br>液<br>えき<br>に酸性の水<br>すい<br>溶<br>よう<br>液<br>えき<br>を加えると，何色を示すか。",
+                        "options": [
+                                    "黄色",
+                                    "青色",
+                                    "赤色"
+                        ],
+                        "answer": 0,
+                        "explanation": "BTB 溶液に酸性の水溶液を加えると、黄色になる。"
+            },
+            {
+                        "id": 115,
+                        "topicIndex": 9,
+                        "group": "q_115",
+                        "question": "水酸化ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>はBTB 溶<br>よう<br>液<br>えき<br>を何色に変化させるか。",
+                        "options": [
+                                    "黄色",
+                                    "青色",
+                                    "赤色"
+                        ],
+                        "answer": 1,
+                        "explanation": "アルカリ性の水溶液にBTB 溶液を加えると，青色になる。"
+            },
+            {
+                        "id": 116,
+                        "topicIndex": 9,
+                        "group": "q_116",
+                        "question": "無色のフェノールフタレイン溶<br>よう<br>液<br>えき<br>は，アルカリ性の水<br>すい<br>溶<br>よう<br>液<br>えき<br>によって何色に変<br>わるか。",
+                        "options": [
+                                    "黄色",
+                                    "青色",
+                                    "赤色",
+                                    "緑色"
+                        ],
+                        "answer": 2,
+                        "explanation": "アルカリ性の水溶液にフェノールフタレイン溶液を加えると赤色に変化す る。"
+            },
+            {
+                        "id": 117,
+                        "topicIndex": 9,
+                        "group": "q_117",
+                        "question": "次のうち，BTB 溶<br>よう<br>液<br>えき<br>を黄色に変えるのはどれか。",
+                        "options": [
+                                    "アンモニア水",
+                                    "エタノール水溶液",
+                                    "石灰水",
+                                    "硫酸"
+                        ],
+                        "answer": 3,
+                        "explanation": "硫酸は酸性の水溶液である。なお，エタノール水溶液は中性，石灰水とアン モニア水はアルカリ性である。"
+            },
+            {
+                        "id": 118,
+                        "topicIndex": 9,
+                        "group": "q_118",
+                        "question": "次のうち，BTB 溶<br>よう<br>液<br>えき<br>を青色に変えるのはどれか。",
+                        "options": [
+                                    "塩酸",
+                                    "砂糖水",
+                                    "石灰水"
+                        ],
+                        "answer": 0,
+                        "explanation": "原子が電子を受けとると，電子の数が陽子の数より多くなり，全体で－の電 気を帯びた陰イオンになる。"
+            },
+            {
+                        "id": 119,
+                        "topicIndex": 9,
+                        "group": "q_119",
+                        "question": "次のうち，BTB 溶<br>よう<br>液<br>えき<br>が緑色を示すのはどれか。",
+                        "options": [
+                                    "水酸化ナトリウム水溶液",
+                                    "食塩水",
+                                    "酢酸",
+                                    "石灰水"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩化物イオンは，塩素原子が電子を1 個受けとった状態で，化学式はCl－で ある。"
+            },
+            {
+                        "id": 120,
+                        "topicIndex": 9,
+                        "group": "q_120",
+                        "question": "酸っぱい味の原因物質である，電でん<br>離<br>り<br>すると水素イオンを生じる物質を何とい<br>うか。",
+                        "options": [
+                                    "アルカリ",
+                                    "酸"
+                        ],
+                        "answer": 0,
+                        "explanation": "水酸化物イオンの化学式は，OH－である。"
+            },
+            {
+                        "id": 121,
+                        "topicIndex": 9,
+                        "group": "q_121",
+                        "question": "マグネシウムリボンを酸性の水<br>すい<br>溶<br>よう<br>液<br>えき<br>に入れるとどんな反応が起こるか。",
+                        "options": [
+                                    "アンモニアが発生する",
+                                    "酸素が発生する",
+                                    "水素が発生する",
+                                    "二酸化炭素が発生する",
+                                    "変化しない",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "銅イオンは，銅原子が電子を2 個放出した状態で，化学式はCu2 ＋である。"
+            },
+            {
+                        "id": 122,
+                        "topicIndex": 10,
+                        "group": "q_122",
+                        "question": "次の図のような装置で電でん<br>圧<br>あつ<br>を加えると，リトマス紙はどちら側の色が変化す<br>るか。",
+                        "options": [
+                                    "陰極側",
+                                    "陽極側"
+                        ],
+                        "answer": 0,
+                        "explanation": "酸性の水 すい 溶 よう 液 えき には，陽 よう イオンである水素イオン（H＋）が存在する。青色リ トマス紙の色を赤色に変えるのは，水素イオンである。電圧を加えると，＋ の電気を帯びている水素イオンは陰 いん 極 きょく に引かれて移動するので，青色リトマ ス紙の陰極側が赤くなる。"
+            },
+            {
+                        "id": 123,
+                        "topicIndex": 10,
+                        "group": "q_123",
+                        "question": "酸性の水溶液に共通して含まれるイオンは何か。",
+                        "options": [
+                                    "ナトリウムイオン",
+                                    "塩化物イオン",
+                                    "水酸化物イオン",
+                                    "水素イオン"
+                        ],
+                        "answer": 3,
+                        "explanation": "酸性の水 すい 溶 よう 液 えき には，陽 よう イオンである水素イオン（H＋）が存在する。青色リ トマス紙の色を赤色に変えるのは，水素イオンである。"
+            },
+            {
+                        "id": 124,
+                        "topicIndex": 10,
+                        "group": "q_124",
+                        "question": "マグネシウムリボンをアルカリ性の水<br>すい<br>溶<br>よう<br>液<br>えき<br>に入れるとどんな反応が起こる<br>か。",
+                        "options": [
+                                    "アンモニアが発生する",
+                                    "酸素が発生する",
+                                    "水素が発生する",
+                                    "変化しない（反応しない）"
+                        ],
+                        "answer": 3,
+                        "explanation": "アルカリ性の水溶液にマグネシウムリボンを加えても反応しないので，変化 は見られない。"
+            },
+            {
+                        "id": 125,
+                        "topicIndex": 10,
+                        "group": "q_125",
+                        "question": "次の図のような装置で電でん<br>圧<br>あつ<br>を加えると，リトマス紙の何極側の色が変わるか。<br><img src='Figs/q125.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "陰極側",
+                                    "陽極側"
+                        ],
+                        "answer": 1,
+                        "explanation": "水酸化ナトリウム水溶液には，陰 いん イオンである水酸化物イオン（OH－）が ふくまれている。電圧を加えると，水酸化物イオンは陽 よう 極 きょく に引かれて移動す るので，赤色リトマス紙の陽極側が青くなる。"
+            },
+            {
+                        "id": 126,
+                        "topicIndex": 10,
+                        "group": "q_126",
+                        "question": "アルカリ性の水溶液に共通して含まれるイオンは何か。",
+                        "options": [
+                                    "ナトリウムイオン",
+                                    "塩化物イオン",
+                                    "水酸化物イオン",
+                                    "水素イオン"
+                        ],
+                        "answer": 2,
+                        "explanation": "アルカリ性の水 すい 溶 よう 液 えき には，陰 いん イオンである水酸化物イオン（OH－）が存在 する。赤色リトマス紙の色を青色に変えるのは，水酸化物イオンである。"
+            },
+            {
+                        "id": 127,
+                        "topicIndex": 10,
+                        "group": "q_127",
+                        "question": "酸性・アルカリ性の強さは，（　　）の値で表すことができる。（　　）にあ<br>てはまる語句を，アルファベットで答えよ。",
+                        "options": [
+                                    "am",
+                                    "pc",
+                                    "pH",
+                                    "pm"
+                        ],
+                        "answer": 2,
+                        "explanation": "水溶液の酸性やアルカリ性の強さは，pH という値の数字で判断する。読み 方は，「ピーエイチ」である。"
+            },
+            {
+                        "id": 128,
+                        "topicIndex": 10,
+                        "group": "q_128",
+                        "question": "水溶液のp<br>ピー<br>H<br>エイチの値が7 であるのは，何性か。<br><img src='Figs/q128.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "アルカリ性",
+                                    "酸性",
+                                    "中性"
+                        ],
+                        "answer": 2,
+                        "explanation": "pH が7 のとき，水溶液は中性である。"
+            },
+            {
+                        "id": 129,
+                        "topicIndex": 10,
+                        "group": "q_129",
+                        "question": "次のうち，酸性・中性・アルカリ性を調べる指<br>し<br>示<br>じ<br>薬<br>やく<br>でないのはどれか。",
+                        "options": [
+                                    "BTB 溶液",
+                                    "フェノールフタレイン溶液",
+                                    "ムラサキキャベツ液",
+                                    "ヨウ素液"
+                        ],
+                        "answer": 3,
+                        "explanation": "ヨウ素液はデンプンを検出する指示薬で，水溶液の性質を判断することはで きない。"
+            },
+            {
+                        "id": 130,
+                        "topicIndex": 10,
+                        "group": "q_130",
+                        "question": "酸性とアルカリ性の水溶液を混ぜ合わせると，水と塩<br>えん<br>が発生する。おたがい<br>の性質を打ち消し合うこの反応を何というか。",
+                        "options": [
+                                    "還元",
+                                    "凝結",
+                                    "酸化",
+                                    "蒸発",
+                                    "中和",
+                                    "溶解"
+                        ],
+                        "answer": 4,
+                        "explanation": "酸の水溶液とアルカリの水溶液を混ぜ合わせると，酸の水素イオン（H＋） とアルカリの水酸化物イオン（OH－）が結びついて水（H2O）になり，たが いの性質を打ち消しあう。この反応を中 ちゅう 和 わ という。"
+            },
+            {
+                        "id": 131,
+                        "topicIndex": 10,
+                        "group": "q_131",
+                        "question": "うすい塩酸にうすい水酸化ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>を加え続けると，その性質はど<br>のように変化していくか。",
+                        "options": [
+                                    "アルカリ性→中性→酸性",
+                                    "酸性→中性→アルカリ性",
+                                    "酸性→アルカリ性→中性",
+                                    "アルカリ性→酸性→中性"
+                        ],
+                        "answer": 0,
+                        "explanation": ""
+            },
+            {
+                        "id": 132,
+                        "topicIndex": 10,
+                        "group": "q_132",
+                        "question": "BTB 溶液を加えたうすい塩酸に，うすい水酸化ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>を加え続<br>けると，水溶液の色はどのように変化していくか。",
+                        "options": [
+                                    "黄色→緑色→青色",
+                                    "青色→黄色→緑色",
+                                    "青色→緑色→黄色",
+                                    "黄色→青色→緑色",
+                                    "1"
+                        ],
+                        "answer": 0,
+                        "explanation": "石灰水がアルカリ性の水溶液である。なお，砂糖水は中性，塩酸は酸性であ る。"
+            },
+            {
+                        "id": 133,
+                        "topicIndex": 11,
+                        "group": "q_133",
+                        "question": "次の図は，うすい塩酸にうすい水酸化ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>を加えていったとき<br>のイオンの変化をモデルで表している。B の水溶液は何性であるか。",
+                        "options": [
+                                    "アルカリ性",
+                                    "酸性",
+                                    "中性"
+                        ],
+                        "answer": 2,
+                        "explanation": "B の水溶液には，酸性を示すもととなる水素イオン（H＋）もアルカリ性を 示すもととなる水酸化物イオン（OH－）もないので，中性である。"
+            },
+            {
+                        "id": 134,
+                        "topicIndex": 11,
+                        "group": "q_134",
+                        "question": "うすい塩酸とうすい水酸化ナトリウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>を混ぜ合わせ，完全に中和させ<br>る。この水溶液を少量とり出し水を蒸発させると，白い固体の結晶が得られ<br>た。この固体は何か。",
+                        "options": [
+                                    "塩化ナトリウム（食塩）",
+                                    "砂糖",
+                                    "硝酸カリウム",
+                                    "硫酸バリウム"
+                        ],
+                        "answer": 0,
+                        "explanation": "塩酸と水酸化ナトリウム水溶液を中和させた液体から水を蒸発させると，塩 化水素の陰 いん イオンである塩化物イオンと，水酸化ナトリウムの陽 よう イオンであ るナトリウムイオンが結びついて，塩化ナトリウム（食塩）ができる。塩化 ナトリウムの結晶は，立方体の形をした白い結晶である。結晶の形は物質ご とに異なるので，結晶を見ると物質が何かわかる。"
+            },
+            {
+                        "id": 135,
+                        "topicIndex": 11,
+                        "group": "q_135",
+                        "question": "中<br>ちゅう<br>和<br>わ<br>では，酸の（　ア　）イオンとアルカリの（　イ　）イオンが結びつい<br>てできた物質を，一般に塩<br>えん<br>という。ア・イにあてはまる言葉を答えよ。",
+                        "options": [
+                                    "ア：陰　イ：陰",
+                                    "ア：陰　イ：陽",
+                                    "ア：陽　イ：陰",
+                                    "ア：陽　イ：陽"
+                        ],
+                        "answer": 1,
+                        "explanation": "塩酸と水酸化ナトリウム水 すい 溶 よう 液 えき を中和させた液体から水を蒸発させると，塩 化水素の陰 いん イオンである塩化物イオンと，水酸化ナトリウムの陽 よう イオンであ るナトリウムイオンが結びついて，塩化ナトリウム（食塩）ができる。"
+            },
+            {
+                        "id": 136,
+                        "topicIndex": 11,
+                        "group": "q_136",
+                        "question": "硝酸と水酸化カリウムを混ぜて中和させると得られる塩<br>えん<br>は何か。<br><img src='Figs/q136.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "硝酸カリウム",
+                                    "硝酸ナトリウム",
+                                    "炭酸カリウム",
+                                    "炭酸ナトリウム",
+                                    "硫酸カリウム",
+                                    "硫酸バリウム"
+                        ],
+                        "answer": 0,
+                        "explanation": "硝酸と水酸化カリウム水溶液を反応させると，硝酸の硝酸イオンと水酸化カ リウムのカリウムイオンが結びついて，硝 しょう 酸 さん カリウムができる。"
+            },
+            {
+                        "id": 137,
+                        "topicIndex": 11,
+                        "group": "q_137",
+                        "question": "次の硝酸と水酸化カリウムの中和の化学反応式で，（　　）にあてはまるも<br>のを1 つ選べ。<br>HNO3　+　KOH　→　（　　）　+　H2O",
+                        "options": [
+                                    "KHO2",
+                                    "KHO3",
+                                    "KNO3",
+                                    "KNO4"
+                        ],
+                        "answer": 2,
+                        "explanation": "硝酸と水酸化カリウム水溶液を反応させると，硝酸の硝酸イオンと水酸化カ リウムのカリウムイオンが結びついて，硝 しょう 酸 さん カリウムができる。硝酸カリウ ムの化学式はKNO3 である。よって，化学反応式は以下となる。 HNO3　+　KOH　→　KNO3　+　H2O"
+            },
+            {
+                        "id": 138,
+                        "topicIndex": 11,
+                        "group": "q_138",
+                        "question": "硫酸と水酸化バリウム水溶液を混ぜ合わせたときに得られる塩<br>えん<br>は何か。",
+                        "options": [
+                                    "硝酸カリウム",
+                                    "硝酸ナトリウム",
+                                    "炭酸カルシウム",
+                                    "炭酸ナトリウム",
+                                    "硫酸カリウム",
+                                    "硫酸バリウム"
+                        ],
+                        "answer": 5,
+                        "explanation": "硫酸に水酸化バリウム水溶液を入れると，硫酸の硫酸イオンと水酸化バリウ ムのバリウムイオンが結びついて硫 りゅう 酸 さん バリウムができる。"
+            },
+            {
+                        "id": 139,
+                        "topicIndex": 11,
+                        "group": "q_139",
+                        "question": "次の硫酸と水酸化バリウムの中和の化学反応式で，（　　）にあてはまるも<br>のを1 つ選べ。<br>H2SO4 　+　Ba （OH）2 　→　（　　）　+　2 H2O",
+                        "options": [
+                                    "BaSO4",
+                                    "BaH2O",
+                                    "BaHO4",
+                                    "2 BaSO4"
+                        ],
+                        "answer": 0,
+                        "explanation": "硫酸に水酸化バリウム水溶液を入れると，硫酸の硫酸イオンと水酸化バリウ ムのバリウムイオンが結びついて硫 りゅう 酸 さん バリウムができる。硫酸バリウムの化 学式はBaSO4 である。よって，化学反応式は以下となる。 H2SO4　+　Ba （OH）2　→　BaSO4　+　2 H2O"
+            },
+            {
+                        "id": 140,
+                        "topicIndex": 11,
+                        "group": "q_140",
+                        "question": "炭酸水と水酸化カルシウム水溶液を混ぜ合わせたときに得られる塩<br>えん<br>は何か。",
+                        "options": [
+                                    "硝酸カリウム",
+                                    "硝酸ナトリウム",
+                                    "炭酸カルシウム",
+                                    "炭酸ナトリウム",
+                                    "硫酸カリウム",
+                                    "硫酸バリウム"
+                        ],
+                        "answer": 2,
+                        "explanation": "水酸化カルシウム水溶液に炭酸水を入れると，水酸化カルシウムのカルシウ ムイオンと炭酸の炭酸イオンが結びついて炭酸カルシウムができる。"
+            },
+            {
+                        "id": 141,
+                        "topicIndex": 11,
+                        "group": "q_141",
+                        "question": "次の炭酸水と水酸化カルシウムの中和の化学反応式で，（　　）にあてはま<br>るものを1 つ選べ。<br>H2CO3　+　Ca（OH）2　→　（　　）　+　2 H2O",
+                        "options": [
+                                    "CaCO2",
+                                    "CaCO3",
+                                    "2 CaCO3",
+                                    "2 CaCO2"
+                        ],
+                        "answer": 1,
+                        "explanation": "水酸化カルシウム水溶液に炭酸水を入れると，水酸化カルシウムのカルシウ ムイオンと炭酸水の炭酸イオンが結びついて炭酸カルシウムができる。炭酸 カルシウムの化学式はCaCO3 である。よって，化学反応式は以下となる。 H2CO3　+　Ca （OH）2　→　CaCO3　+　2 H2O"
+            },
+            {
+                        "id": 142,
+                        "topicIndex": 11,
+                        "group": "q_142",
+                        "question": "酸とアルカリを混ぜたとき沈<br>ちん<br>殿でん<br>ができるのは，中和されてできた塩<br>えん<br>が（　　）<br>だからである。（　　）にあてはまる言葉を答えよ。",
+                        "options": [
+                                    "電解質",
+                                    "非電解質 3"
+                        ],
+                        "answer": 0,
+                        "explanation": "ものである）にとけないため，沈殿となる。"
+            },
+            {
+                        "id": 143,
+                        "topicIndex": 11,
+                        "group": "q_143",
+                        "question": "電でん<br>解<br>かい<br>質<br>しつ<br>の水<br>すい<br>溶<br>よう<br>液<br>えき<br>に同じ種類の金属を2 枚入れて導線でつなげば，電気エネル<br>ギーはとり出せるか，とり出せないか。",
+                        "options": [
+                                    "とり出せる",
+                                    "とり出せない"
+                        ],
+                        "answer": 1,
+                        "explanation": "電 でん 池 ち になる条件は，電解質の水溶液に2 種類の金属板を入れて導線でつなぐ ことである。同じ種類の金属板でできた2 枚の金属板を電解質の水溶液に入 れて導線でつないだときは電気エネルギーはとり出せない。"
+            },
+            {
+                        "id": 144,
+                        "topicIndex": 11,
+                        "group": "q_144",
+                        "question": "次のうち，異なる種類の金属板を2 枚入れて導線でつなぐと電流が流れる水<br>すい<br>溶<br>よう<br>液<br>えき<br>は，何種類あるか。<br>食塩水　　砂糖水　　レモン汁　　エタノール水溶液<br>うすい水酸化ナトリウム水溶液",
+                        "options": [
+                                    "1 種類",
+                                    "2 種類",
+                                    "3 種類",
+                                    "4 種類",
+                                    "5 種類"
+                        ],
+                        "answer": 2,
+                        "explanation": "電 でん 池 ち をつくるには，電 でん 解 かい 質 しつ の水溶液が必要である。食塩水，レモン汁，うす い水酸化ナトリウム水溶液は電解質の水溶液である。このほか，食酢，うす い塩酸，スポーツドリンクなども電流が流れる。水道水もわずかだが電流が 流れる。"
+            },
+            {
+                        "id": 145,
+                        "topicIndex": 11,
+                        "group": "q_145",
+                        "question": "水<br>すい<br>溶<br>よう<br>液<br>えき<br>に種類の異なる2 枚の金属板をさして導線でつないだとき，電流が流<br>れるのは電でん<br>解<br>かい<br>質<br>しつ<br>の水溶液と非電解質の水溶液のどちらか。",
+                        "options": [
+                                    "非電解質の水溶液",
+                                    "電解質の水溶液"
+                        ],
+                        "answer": 0,
+                        "explanation": "電解質の水溶液に2 種類の金属板を入れ，導線でつなぐと電 でん 池 ち になる。"
+            },
+            {
+                        "id": 146,
+                        "topicIndex": 11,
+                        "group": "q_146",
+                        "question": "うすい塩酸に銅板と亜鉛板を入れた化学電池では，銅板が＋極，亜鉛板が－<br>極になるが，この金属板の組み合わせを変えることによって，＋極，－極は<br>変わるか，変わらないか。",
+                        "options": [
+                                    "変わる",
+                                    "変わらない"
+                        ],
+                        "answer": 0,
+                        "explanation": "2 種類の金属板では，よりイオンになりやすい方が－極になるので，金属板 の組み合わせによって，－極になる金属板は変わる。"
+            },
+            {
+                        "id": 147,
+                        "topicIndex": 11,
+                        "group": "q_147",
+                        "question": "硫<br>りゅう<br>酸<br>さん<br>銅<br>どう<br>水<br>すい<br>溶<br>よう<br>液<br>えき<br>にマグネシウム板を入れると，イオンへのなりやすさからマグ<br>ネシウム原子はマグネシウムイオンになるが，銅イオンは何になるか，また<br>は，変化しないか。",
+                        "options": [
+                                    "酸化銅",
+                                    "銅原子",
+                                    "変化しない"
+                        ],
+                        "answer": 0,
+                        "explanation": "うすい塩酸は酸性。うすい水酸化ナトリウム水溶液を少しずつ加えていくと， ちゅう 和 わ が起こり，性質は中性に近づく。完全に中和した後は，水溶液中の水酸 化物イオンの数が増えていき，性質はアルカリ性になる。 よって，水溶液の性質は酸性→中性→アルカリ性と変化する。"
+            },
+            {
+                        "id": 148,
+                        "topicIndex": 11,
+                        "group": "q_148",
+                        "question": "硫<br>りゅう<br>酸<br>さん<br>マグネシウム水<br>すい<br>溶<br>よう<br>液<br>えき<br>に亜<br>あ<br>鉛<br>えん<br>板を入れると，イオンへのなりやすさからマ<br>グネシウムイオンはそのままであるが，亜鉛板は何になるか，または，変化<br>しないか。",
+                        "options": [
+                                    "亜鉛イオン",
+                                    "酸化亜鉛",
+                                    "変化しない ⾃──⾄ ⾅──⾆"
+                        ],
+                        "answer": 0,
+                        "explanation": "うすい塩酸は酸性であるため，BTB 溶液を加えると黄色になる。うすい水 酸化ナトリウム水溶液を少しずつ加えていくと，中 ちゅう 和 わ が起こり，性質は中性 に近づき緑色になる。完全に中和した後は，水溶液中の水酸化物イオンの数 が増えていき，性質はアルカリ性になり青色になる。 よって，水溶液の色は黄色→緑色→青色と変化する。"
+            },
+            {
+                        "id": 149,
+                        "topicIndex": 12,
+                        "group": "q_149",
+                        "question": "うすい塩酸に銅板と亜<br>あ<br>鉛<br>えん<br>板を入れた電池で，亜鉛と銅のどちらがイオンにな<br>るか。",
+                        "options": [
+                                    "亜鉛",
+                                    "銅"
+                        ],
+                        "answer": 0,
+                        "explanation": "亜鉛と銅では亜鉛の方がイオンになりやすいため，亜鉛原子が電子を2 個放 ほう 出 しゅつ して亜鉛イオン（Zn2 ＋）になり，水溶液中にとけ出す。"
+            },
+            {
+                        "id": 150,
+                        "topicIndex": 12,
+                        "group": "q_150",
+                        "question": "うすい塩酸に銅板と亜<br>あ<br>鉛<br>えん<br>板を入れた電池で，－<br>マイナス<br>極になるのは銅板と亜鉛板のどちらか。",
+                        "options": [
+                                    "亜鉛板",
+                                    "銅板"
+                        ],
+                        "answer": 0,
+                        "explanation": "亜鉛と銅では亜鉛の方がイオンになりやすいため，亜鉛原子が電子を2 個放 ほう 出 しゅつ して亜鉛イオン（Zn2 ＋）になり，水溶液中にとけ出す。電子は導線を通っ て銅板に移動する。電子の移動の向きと電流の流れる向きは逆であり，電流 は銅板から亜鉛板に流れるため，－極になるのは亜鉛板である。"
+            },
+            {
+                        "id": 151,
+                        "topicIndex": 12,
+                        "group": "q_151",
+                        "question": "うすい塩酸に銅板と亜<br>あ<br>鉛<br>えん<br>板を入れた電池で電流をとり出すと，銅板から何が<br>発生するか。",
+                        "options": [
+                                    "アンモニア",
+                                    "塩化水素",
+                                    "酸素",
+                                    "水素",
+                                    "二酸化炭素"
+                        ],
+                        "answer": 1,
+                        "explanation": "亜 あ 鉛 えん 原子が放 ほう 出 しゅつ した電子は，導線を通って銅板に移動する。銅板では，水溶 液中の水素イオン（H+）が電子を1 個受けとって水素原子になり，水素原 子が2 個結びついて水素分子になる。よって，銅板で水素（気体）が発生す る。"
+            },
+            {
+                        "id": 152,
+                        "topicIndex": 12,
+                        "group": "q_152",
+                        "question": "次の図のような電池で，水溶液中で増えていくのは亜<br>あ<br>鉛<br>えん<br>イオンであるが，減っ<br>ていくイオンはどれか。",
+                        "options": [
+                                    "銅イオン",
+                                    "水素イオン",
+                                    "硫酸イオン",
+                                    "硫酸イオンと銅イオン"
+                        ],
+                        "answer": 1,
+                        "explanation": "亜鉛原子は，電子を2 個放 ほう 出 しゅつ して亜鉛イオン（Zn2 ＋）になって水溶液中に とけ出すので，水溶液中の亜鉛イオンは増えていく。水溶液中の水素イオン （H＋）は，銅板で電子を受けとり，水素原子になり，水素原子が2 個結び ついて水素分子になって空気中に出ていくので，水素イオンは減っていく。"
+            },
+            {
+                        "id": 153,
+                        "topicIndex": 12,
+                        "group": "q_153",
+                        "question": "セロハン膜などでへだてた硫<br>りゅう<br>酸<br>さん<br>亜<br>あ<br>鉛<br>えん<br>水<br>すい<br>溶<br>よう<br>液<br>えき<br>に亜鉛板，硫酸銅水溶液に銅板を<br>入れてつくった電池を何というか。",
+                        "options": [
+                                    "ダニエル電池",
+                                    "燃料電池",
+                                    "木炭電池"
+                        ],
+                        "answer": 0,
+                        "explanation": "ボルタ電池は，可燃性の水素が発生したり，電圧がすぐに低下したりする問 題点があるため，改良したダニエル電池ができた。"
+            },
+            {
+                        "id": 154,
+                        "topicIndex": 12,
+                        "group": "q_154",
+                        "question": "ダニエル電池では，亜鉛と銅のどちらがイオンになりやすいか。",
+                        "options": [
+                                    "どちらも同じ",
+                                    "亜鉛",
+                                    "銅"
+                        ],
+                        "answer": 1,
+                        "explanation": "亜鉛と銅では，亜鉛の方がイオンになりやすい。"
+            },
+            {
+                        "id": 155,
+                        "topicIndex": 12,
+                        "group": "q_155",
+                        "question": "ダニエル電池で，－極になるのは亜鉛板と銅板のどちらか。<br><img src='Figs/q155.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "options": [
+                                    "亜鉛板",
+                                    "銅板"
+                        ],
+                        "answer": 0,
+                        "explanation": "亜鉛と銅では，亜鉛の方がイオンになりやすい。電池では，イオンになりや すい金属が電子を放出するので－極になる。"
+            },
+            {
+                        "id": 156,
+                        "topicIndex": 12,
+                        "group": "q_156",
+                        "question": "ダニエル電池における，電子が移動する方向と電流の向きについて正しい組<br>み合わせを選べ。",
+                        "options": [
+                                    "電子：亜鉛板から銅板　電流：銅板から亜鉛板",
+                                    "電子：銅板から亜鉛板　電流：亜鉛板から銅板"
+                        ],
+                        "answer": 0,
+                        "explanation": "亜鉛板では，亜鉛原子が電子を2 個放出して亜鉛イオン（Zn2 ＋）になる。 電子は，導線を通って銅板に移動するので，電子の移動する向きは亜鉛→銅 である。"
+            },
+            {
+                        "id": 157,
+                        "topicIndex": 12,
+                        "group": "q_157",
+                        "question": "次のうち，一<br>いち<br>次<br>じ<br>電でん<br>池<br>ち<br>（一度使い切ると再使用できない電池）はどれか。",
+                        "options": [
+                                    "マンガン乾電池",
+                                    "リチウムイオン電池",
+                                    "鉛蓄電池"
+                        ],
+                        "answer": 0,
+                        "explanation": "マンガン乾電池は一次電池である。リチウムイオン電池，鉛蓄電池は二 に 次 じ 電 でん 池 ち である。"
+            },
+            {
+                        "id": 158,
+                        "topicIndex": 12,
+                        "group": "q_158",
+                        "question": "次のうち，二に<br>次<br>じ<br>電でん<br>池<br>ち<br>（充電してくり返し使うことのできる電池）はどれか。",
+                        "options": [
+                                    "アルカリ乾電池",
+                                    "ニッケル水素電池",
+                                    "酸化銀電池 3"
+                        ],
+                        "answer": 1,
+                        "explanation": "ニッケル水素電池は二次電池である。酸化銀電池，アルカリ乾電池は一 いち 次 じ 電 でん 池 ち である。"
             }
-        ]
+]
     },
 
     // Initialization
@@ -1239,8 +3185,8 @@ window.app = {
                     if (this.state.currentQuestion && q.id === this.state.currentQuestion.id) {
                         button.classList.add('active');
                     }
-                    button.textContent = `Q${q.id}: ${q.question.replace(/<[^>]+>/g, '')}`;
-                    button.title = q.question.replace(/<[^>]+>/g, '');
+                    button.textContent = `Q${q.id}: ${q.question}`;
+                    button.title = q.question;
                     button.onclick = () => this.jumpToQuestion(q.id);
                     li.appendChild(button);
                     questionList.appendChild(li);
