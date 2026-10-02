@@ -282,7 +282,7 @@ window.app = {
                         "id": 1,
                         "topicIndex": 0,
                         "group": "q_1",
-                        "question": "炭酸水素ナトリウム水溶液（すいようえき）と，炭酸ナトリウム水溶液のそれぞれにフェノー<br>ルフタレイン溶液を加えたとき，どちらがよりこい赤色になるか。",
+                        "question": "炭酸水素ナトリウム水溶液（すいようえき）と，炭酸ナトリウム水溶液のそれぞれにフェノールフタレイン溶液を加えたとき，どちらがよりこい赤色になるか。",
                         "options": [
                                     "炭酸ナトリウム水溶液",
                                     "炭酸水素ナトリウム水溶液"
@@ -308,7 +308,7 @@ window.app = {
                         "id": 3,
                         "topicIndex": 0,
                         "group": "q_3",
-                        "question": "酸化銀を加熱して残った物質は電気を通したが，元の酸化銀は電気を通すか，<br>通さないか。",
+                        "question": "酸化銀を加熱して残った物質は電気を通したが，元の酸化銀は電気を通すか，通さないか。",
                         "options": [
                                     "通さない",
                                     "通す"
@@ -1888,20 +1888,20 @@ window.app = {
                                     "酢酸",
                                     "石灰水"
                         ],
-                        "answer": 0,
-                        "explanation": "塩化物イオンは，塩素原子が電子を1 個受けとった状態で，化学式はCl<sup>-</sup>で ある。"
+                        "answer":  1,
+                        "explanation": "食塩水は中性であるため、BTB溶液を加えると緑色を示します。"
             },
             {
                         "id": 120,
                         "topicIndex": 9,
                         "group": "q_120",
-                        "question": "酸っぱい味の原因物質である，電でん<br>電離（でんり）すると水素イオンを生じる物質を何とい<br>うか。",
+                        "question": "酸っぱい味の原因物質である，電離（でんり）すると水素イオンを生じる物質を何というか。",
                         "options": [
                                     "アルカリ",
                                     "酸"
                         ],
-                        "answer": 0,
-                        "explanation": "水酸化物イオンの化学式は，OH<sup>-</sup>である。"
+                        "answer":  1,
+                        "explanation": "酸は、水に溶けて電離し、水素イオン（H<sup>+</sup>）を生じる物質です。"
             },
             {
                         "id": 121,
@@ -1915,14 +1915,14 @@ window.app = {
                                     "二酸化炭素が発生する",
                                     "変化しない"
                         ],
-                        "answer": 0,
-                        "explanation": "銅イオンは，銅原子が電子を2 個放出した状態で，化学式はCu<sup>2+</sup>である。"
+                        "answer":  2,
+                        "explanation": "酸性の水溶液にマグネシウムなどの金属を入れると、水素が発生します。"
             },
             {
                         "id": 122,
                         "topicIndex": 10,
                         "group": "q_122",
-                        "question": "次の図のような装置で電でん<br>電圧（でんあつ）を加えると，リトマス紙はどちら側の色が変化す<br>るか。",
+                        "question": "次の図のような装置で電圧（でんあつ）を加えると，リトマス紙はどちら側の色が変化するか。",
                         "options": [
                                     "陰極側",
                                     "陽極側"
@@ -1962,7 +1962,7 @@ window.app = {
                         "id": 125,
                         "topicIndex": 10,
                         "group": "q_125",
-                        "question": "次の図のような装置で電でん<br>電圧（でんあつ）を加えると，リトマス紙の何極側の色が変わるか。<br><img src='Figs/q125.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "question": "次の図のような装置で電圧（でんあつ）を加えると，リトマス紙は陽極・陰極のどちら側の色が変わるか。<br><img src='Figs/q125.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
                         "options": [
                                     "陰極側",
                                     "陽極側"
@@ -2002,7 +2002,7 @@ window.app = {
                         "id": 128,
                         "topicIndex": 10,
                         "group": "q_128",
-                        "question": "水溶液のp<br>ピー<br>H<br>エイチの値が7 であるのは，何性か。<br><img src='Figs/q128.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
+                        "question": "水溶液のpHの値が7 であるのは，何性か。<br><img src='Figs/q128.png' alt='図' class='mt-4 max-w-full h-auto rounded-lg shadow-md'>",
                         "options": [
                                     "アルカリ性",
                                     "酸性",
@@ -2396,7 +2396,7 @@ window.app = {
                         "id": 157,
                         "topicIndex": 12,
                         "group": "q_157",
-                        "question": "次のうち，一次（いちじ）電でん<br>電池（でんち）（一度使い切ると再使用できない電池）はどれか。",
+                        "question": "次のうち，一次（いちじ）電池（でんち）（一度使い切ると再使用できない電池）はどれか。",
                         "options": [
                                     "マンガン乾電池",
                                     "リチウムイオン電池",
@@ -3177,8 +3177,9 @@ window.app = {
                     if (this.state.currentQuestion && q.id === this.state.currentQuestion.id) {
                         button.classList.add('active');
                     }
-                    button.textContent = `Q${q.id}: ${q.question}`;
-                    button.title = q.question;
+                    const plainText = q.question.replace(/<[^>]+>/g, '');
+                    button.textContent = `Q${q.id}: ${plainText}`;
+                    button.title = plainText;
                     button.onclick = () => this.jumpToQuestion(q.id);
                     li.appendChild(button);
                     questionList.appendChild(li);
