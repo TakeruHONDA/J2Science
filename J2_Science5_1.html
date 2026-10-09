@@ -136,6 +136,13 @@
    	        <input type="text" id="student-class-input" placeholder="クラス (例: A)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-id-input" placeholder="出席番号" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-name-input" placeholder="名前" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+<select id="question-limit-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <option value="10">10問だけ解く</option>
+    <option value="20">20問だけ解く</option>
+    <option value="30">30問だけ解く</option>
+    <option value="all">全問（52問）解く</option>
+</select>
+
             </div>
             <button id="start-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-lg shadow-lg transition-transform transform hover:scale-105 mb-3">
                 学習を開始する
@@ -242,6 +249,7 @@ window.app = {
         studentClassInput: document.getElementById('student-class-input'),
         studentIdInput: document.getElementById('student-id-input'),
         studentNameInput: document.getElementById('student-name-input'),
+        questionLimitSelect: document.getElementById('question-limit-select'),
         reportStudentInfo: document.getElementById('report-student-info'),
         reportContent: document.getElementById('report-content'),
         reportReviewContent: document.getElementById('report-review-content'),
@@ -279,7 +287,7 @@ window.app = {
                     "炭酸水素ナトリウム水溶液"
                 ],
                 "answer": 0,
-                "explanation": "炭酸ナトリウムは炭酸水素ナトリウムよりも水溶液が強いアルカリ性を示す ため，フェノールフタレイン溶液を加えるとこい赤色になる。"
+                "explanation": "炭酸ナトリウムは炭酸水素ナトリウムよりも水溶液が強いアルカリ性を示すため、フェノールフタレイン溶液を加えるとこい赤色になる。"
             },
             {
                 "id": 2,
@@ -319,7 +327,7 @@ window.app = {
                     "線香の火が緑色になる"
                 ],
                 "answer": 0,
-                "explanation": "酸化銀を加熱すると酸素が発生する。酸素に火のついた線香を入れると，線 香が炎をあげて激しく燃える。"
+                "explanation": "酸化銀を加熱すると酸素が発生する。酸素に火のついた線香を入れると、線香が炎をあげて激しく燃える。"
             },
             {
                 "id": 5,
@@ -348,7 +356,7 @@ window.app = {
                     "二酸化炭素と銀"
                 ],
                 "answer": 1,
-                "explanation": "酸化銀を加熱すると，銀と酸素に分かれる。"
+                "explanation": "酸化銀を加熱すると、銀と酸素に分かれる。"
             },
             {
                 "id": 7,
@@ -360,7 +368,7 @@ window.app = {
                     "状態変化"
                 ],
                 "answer": 0,
-                "explanation": "物質そのものが変化して別の物質になることを，化学変化（かがくへんか）（化学反応（かがくはんのう））とい う。状態変化は，物質そのものは変化せず，温度がもどると物質も元の状態 にもどる。"
+                "explanation": "物質そのものが変化して別の物質になることを、化学変化（化学反応）という。"
             },
             {
                 "id": 8,
@@ -374,7 +382,7 @@ window.app = {
                     "分離"
                 ],
                 "answer": 2,
-                "explanation": "1 種類の物質が2 種類以上の別の物質に分かれる化学変化を分解（ぶんかい）という。"
+                "explanation": "1種類の物質が2種類以上の別の物質に分かれる化学変化を分解という。"
             },
             {
                 "id": 9,
@@ -388,7 +396,7 @@ window.app = {
                     "融解 3"
                 ],
                 "answer": 1,
-                "explanation": "分解の中でも，加熱によって起こる分解を熱 ねつ 分解（ぶんかい）という。"
+                "explanation": "分解の中でも、加熱によって起こる分解を熱分解という。"
             },
             {
                 "id": 10,
@@ -400,7 +408,7 @@ window.app = {
                     "A：陽極　B：陰極"
                 ],
                 "answer": 0,
-                "explanation": "電気分解をするとき，電源装置の＋極につないだ電極を陽極（ようきょく），－極につない だ電極を陰極（いんきょく）という。"
+                "explanation": "電源装置の－極につないだ電極を陰極、＋極につないだ電極を陽極という。"
             },
             {
                 "id": 11,
@@ -414,7 +422,7 @@ window.app = {
                     "二酸化炭素"
                 ],
                 "answer": 2,
-                "explanation": "水を電気分解すると，陰極（いんきょく）に水素が発生する。"
+                "explanation": "水を電気分解すると、陰極に水素が発生する。"
             },
             {
                 "id": 12,
@@ -428,7 +436,7 @@ window.app = {
                     "二酸化炭素"
                 ],
                 "answer": 1,
-                "explanation": "水を電気分解すると，陽極（ようきょく）に酸素が発生する。"
+                "explanation": "水を電気分解すると、陽極に酸素が発生する。"
             },
             {
                 "id": 13,
@@ -443,7 +451,7 @@ window.app = {
                     "3：1"
                 ],
                 "answer": 3,
-                "explanation": "水を電気分解したときに発生する水素（陰極（いんきょく））と酸素（陽極（ようきょく））の体積比は 2：1 になる。"
+                "explanation": "水を電気分解したときに発生する水素（陰極）と酸素（陽極）の体積比は 2：1 になる。"
             },
             {
                 "id": 14,
@@ -470,7 +478,7 @@ window.app = {
                     "有機物"
                 ],
                 "answer": 0,
-                "explanation": "炭酸ナトリウムの水溶液（すいようえき）と炭酸水素ナトリウムの水溶液はどちらもアルカリ 性であるが，炭酸ナトリウムの水溶液のほうが，より強いアルカリ性になる。"
+                "explanation": "物質をつくる最小の粒を原子という。"
             },
             {
                 "id": 16,
@@ -482,8 +490,8 @@ window.app = {
                     "原子の質量は種類によって決まっている。",
                     "原子の質量は化学変化によって変化する。"
                 ],
-                "answer": 0,
-                "explanation": "炭酸ナトリウムは炭酸水素ナトリウムよりも水溶液が強いアルカリ性を示す ため，フェノールフタレイン溶液を加えるとこい赤色になる。"
+                "answer": 1,
+                "explanation": "原子の質量や大きさは、原子の種類によって決まっている。"
             },
             {
                 "id": 17,
@@ -496,7 +504,7 @@ window.app = {
                     "粒子"
                 ],
                 "answer": 0,
-                "explanation": "原子の種類を元素（げんそ）という。"
+                "explanation": "原子の種類を元素という。"
             },
             {
                 "id": 18,
@@ -509,7 +517,7 @@ window.app = {
                     "溶解度曲線"
                 ],
                 "answer": 0,
-                "explanation": "性質が似ている元素（げんそ）が縦の列に並ぶように整理した表を元素（げんそ）の周期表（しゅうきひょう）（周期表（しゅうきひょう））という。"
+                "explanation": "性質が似ている元素が縦の列に並ぶように整理した表を元素の周期表という。"
             },
             {
                 "id": 19,
@@ -522,8 +530,8 @@ window.app = {
                     "N",
                     "Ｏ"
                 ],
-                "answer": 0,
-                "explanation": "水素の元素記号はH である。"
+                "answer": 1,
+                "explanation": "陰極に発生するのは水素であり、水素の元素記号はHである。"
             },
             {
                 "id": 20,
@@ -537,7 +545,7 @@ window.app = {
                     "Fe"
                 ],
                 "answer": 0,
-                "explanation": "酸化銀を十分に加熱すると試験管に銀が残る。銀の元素記号はAg である。"
+                "explanation": "酸化銀を加熱して残る白色の物質は銀である。銀の元素記号はAgである。"
             },
             {
                 "id": 21,
@@ -551,7 +559,7 @@ window.app = {
                     "Mn"
                 ],
                 "answer": 2,
-                "explanation": "マグネシウムの元素記号はMg である。"
+                "explanation": "マグネシウムの元素記号はMgである。"
             },
             {
                 "id": 22,
@@ -565,7 +573,7 @@ window.app = {
                     "窒素"
                 ],
                 "answer": 0,
-                "explanation": "物質をつくる最小の単位である小さな粒子を原子（げんし）という。"
+                "explanation": "酸素の元素記号はOである。"
             },
             {
                 "id": 23,
@@ -578,8 +586,8 @@ window.app = {
                     "炭素",
                     "窒素"
                 ],
-                "answer": 0,
-                "explanation": "原子は種類ごとに質量や大きさが決まっていて，その値が化学変化によって 変わることはない。"
+                "answer":  2,
+                "explanation": "Cは炭素を表す元素記号である。"
             },
             {
                 "id": 24,
@@ -592,8 +600,8 @@ window.app = {
                     "ナトリウム",
                     "マグネシウム"
                 ],
-                "answer": 0,
-                "explanation": ""
+                "answer":  2,
+                "explanation": "Naはナトリウムを表す元素記号である。"
             },
             {
                 "id": 25,
@@ -606,8 +614,8 @@ window.app = {
                     "糖",
                     "分子"
                 ],
-                "answer": 0,
-                "explanation": ""
+                "answer":  3,
+                "explanation": "物質の性質を示す最小の粒子を分子という。"
             },
             {
                 "id": 26,
@@ -621,7 +629,7 @@ window.app = {
                     "◎◯◎"
                 ],
                 "answer": 1,
-                "explanation": "水分子は，酸素原子◎が1 個，水素原子◯が2 個集まってできている。"
+                "explanation": "水分子は、酸素原子1個と水素原子2個が結びついてできている。"
             },
             {
                 "id": 27,
@@ -635,7 +643,7 @@ window.app = {
                     "O<sub>2</sub>H"
                 ],
                 "answer": 2,
-                "explanation": "水の分子はH<sub>2</sub>O と表す。水素原子は2 個結びついているので，水素原子を 表すH の右下に2 を小さく書く。"
+                "explanation": "水分子はH2Oと表す。"
             },
             {
                 "id": 28,
@@ -648,7 +656,7 @@ window.app = {
                     "単体"
                 ],
                 "answer": 2,
-                "explanation": "窒素は窒素原子が2 個集まって窒素分子をつくっており，単体の気体である。"
+                "explanation": "窒素のように、1種類の元素でできている物質を単体という。"
             },
             {
                 "id": 29,
@@ -661,7 +669,7 @@ window.app = {
                     "単体"
                 ],
                 "answer": 0,
-                "explanation": "酸化銀は，銀と酸素が結びついてできている化合物である。"
+                "explanation": "酸化銀のように、2種類以上の元素でできている物質を化合物という。"
             },
             {
                 "id": 30,
@@ -674,7 +682,7 @@ window.app = {
                     "単体"
                 ],
                 "answer": 1,
-                "explanation": "空気は窒素（ちっそ），酸素，二酸化炭素，アルゴンなどの物質（気体）が混ざった混 合物である。"
+                "explanation": "空気のように、2種類以上の物質が混ざってできているものを混合物という。"
             },
             {
                 "id": 31,
@@ -686,7 +694,7 @@ window.app = {
                     "加熱をやめても反応が続く。"
                 ],
                 "answer": 1,
-                "explanation": "鉄と硫黄の混合物を加熱すると熱が発生するので，加熱をやめてもその熱で 反応が続く。"
+                "explanation": "鉄と硫黄の反応で熱が発生するため、加熱をやめても反応が続く。"
             },
             {
                 "id": 32,
@@ -697,8 +705,8 @@ window.app = {
                     "A",
                     "B"
                 ],
-                "answer": 1,
-                "explanation": "鉄と硫黄の混合物を加熱しすべて反応させた物質は鉄の性質をもたないた め，磁石につかない。B の中の鉄のみが磁石につく。"
+                "answer": 0,
+                "explanation": "反応前の混合物（A）には鉄が含まれているため、磁石に引きつけられる。"
             },
             {
                 "id": 33,
@@ -709,8 +717,8 @@ window.app = {
                     "A",
                     "B"
                 ],
-                "answer": 0,
-                "explanation": "空気中でマグネシウムを燃やしてできた酸化（さんか）マグネシウムや，鉄を燃やして できた酸化鉄（さんかてつ）は，それぞれ燃やす前とは異なる物質で，燃やす前の性質をもっ ていない。例えば，鉄に塩酸を加えると水素が発生するが，酸化鉄に塩酸を 加えても水素は発生しないなど，酸化鉄は鉄の性質をもっていない。それ以 外にも酸化鉄は電気を通さない，金属光沢がないなど，鉄とは性質が異なる。"
+                "answer": 1,
+                "explanation": "反応後の硫化鉄（B）に塩酸をかけると、特有のにおいのある硫化水素が発生する。"
             },
             {
                 "id": 34,
@@ -724,8 +732,8 @@ window.app = {
                     "二酸化炭素",
                     "硫化水素"
                 ],
-                "answer": 3,
-                "explanation": "物質が酸素と結びつく化学変化を酸化（さんか）という。"
+                "answer": 4,
+                "explanation": "硫化鉄にうすい塩酸を加えると、硫化水素が発生する。"
             },
             {
                 "id": 35,
@@ -739,8 +747,8 @@ window.app = {
                     "二酸化炭素",
                     "硫化水素"
                 ],
-                "answer": 0,
-                "explanation": "光や熱を出す激しい酸化（酸素と結びつく化学反応）を燃焼（ねんしょう）という。"
+                "answer": 2,
+                "explanation": "鉄（未反応）にうすい塩酸を加えると、水素が発生する。"
             },
             {
                 "id": 36,
@@ -753,8 +761,8 @@ window.app = {
                     "硫化鉄",
                     "硫化銅"
                 ],
-                "answer": 0,
-                "explanation": "マグネシウムは空気中で火をつけると熱や光を出しながら燃焼し，白色の酸 化マグネシウムになる。"
+                "answer": 2,
+                "explanation": "鉄と硫黄の混合物を加熱すると、硫化鉄ができる。"
             },
             {
                 "id": 37,
@@ -768,7 +776,7 @@ window.app = {
                     "白色"
                 ],
                 "answer": 1,
-                "explanation": "鉄と硫黄の混合物を加熱してできた硫化鉄（りゅうかてつ）は黒色である。"
+                "explanation": "鉄と硫黄が反応してできた硫化鉄は黒色である。"
             },
             {
                 "id": 38,
@@ -781,7 +789,7 @@ window.app = {
                     "化学方程式"
                 ],
                 "answer": 0,
-                "explanation": "化学式を使って化学変化のようすを表したものを化学反応（かがくはんのう）式 しき という。"
+                "explanation": "化学式を用いて化学変化のようすを表したものを化学反応式という。"
             },
             {
                 "id": 39,
@@ -793,7 +801,7 @@ window.app = {
                     "変化する"
                 ],
                 "answer": 0,
-                "explanation": "化学変化の前後では，原子の組み合わせが変わるが，原子の種類と数は変化 しない。"
+                "explanation": "化学変化の前後では、原子の組み合わせが変わるだけで、原子の種類や数は変化しない。"
             },
             {
                 "id": 40,
@@ -807,8 +815,8 @@ window.app = {
                     "2 H<sub>2</sub>O　→　H<sub>2</sub>　+　2 O<sub>2</sub>",
                     "2 H<sub>2</sub>O　→　4 H　+　O<sub>2</sub>"
                 ],
-                "answer": 0,
-                "explanation": "化学反応式は，まずは物質を日本語で表して式を考える。 水　→　水素　+　酸素 次に，日本語で表した物質を化学式（かがくしき）で表す。 H<sub>2</sub>O　→　H<sub>2</sub>　+　O<sub>2</sub> 次に，反応前後の原子（げんし）の数をあわせる。 2 H<sub>2</sub>O　→　2 H<sub>2</sub>　+　O<sub>2</sub> 今回の選択肢で，物質を正しい化学式で表しており，反応前後の原子の数も あっているのは③の化学反応式である。"
+                "answer": 2,
+                "explanation": "水の電気分解の化学反応式は 2H2O → 2H2 + O2 である。"
             },
             {
                 "id": 41,
@@ -821,8 +829,8 @@ window.app = {
                     "C　+　2 O　→　CO<sub>2</sub>",
                     "C　+　O　→　CO"
                 ],
-                "answer": 0,
-                "explanation": "炭素（C）と酸素（O<sub>2</sub>）が反応して二酸化炭素（CO<sub>2</sub>）ができる。"
+                "answer": 1,
+                "explanation": "炭素の燃焼の化学反応式は C + O2 → CO2 である。"
             },
             {
                 "id": 42,
@@ -835,8 +843,8 @@ window.app = {
                     "Ag<sub>2</sub>O　→　2 Ag　+　O<sub>2</sub>",
                     "2 Ag<sub>2</sub>O　→　4 Ag　+　O<sub>2</sub>"
                 ],
-                "answer": 0,
-                "explanation": "酸化銀（Ag<sub>2</sub>O）が分解して銀（Ag）と酸素（O<sub>2</sub>）ができる。反応前後の 酸素原子の数をそろえるために酸化銀を表すAg<sub>2</sub>O の左側に2 を書く。矢 印の左側で銀原子の数が4 個になるので，矢印の右側の銀を表すAg の左側 に4 を書く。"
+                "answer": 3,
+                "explanation": "酸化銀の分解の化学反応式は 2Ag2O → 4Ag + O2 である。"
             },
             {
                 "id": 43,
@@ -849,8 +857,8 @@ window.app = {
                     "2 NaHCO<sub>3</sub>　→　Na<sub>2</sub>CO<sub>3</sub>　+　H<sub>2</sub>O　+　2 CO<sub>2</sub>",
                     "2 NaHCO<sub>3</sub>　→　Na<sub>2</sub>CO<sub>3</sub>　+　2 H<sub>2</sub>O　+　2 CO<sub>2</sub>"
                 ],
-                "answer": 0,
-                "explanation": "炭酸水素ナトリウム（NaHCO<sub>3</sub>）が分解して炭酸ナトリウム（Na<sub>2</sub>CO<sub>3</sub>）， 水（H<sub>2</sub>O），二酸化炭素（CO<sub>2</sub>）になる。矢印の左右に化学式（かがくしき）をかくだけでは， 原子（げんし）の数がそろわない。よって，矢印の左右でナトリウム原子の数をそろえ るために矢印の左側の炭酸水素ナトリウムの前に２を書くと，水素，酸素， 炭素原子は矢印の左右で数が等しくなる。"
+                "answer": 1,
+                "explanation": "炭酸水素ナトリウムの分解の化学反応式は 2NaHCO3 → Na2CO3 + H2O + CO2 である。"
             },
             {
                 "id": 44,
@@ -863,8 +871,8 @@ window.app = {
                     "2 Cu　+　O<sub>2</sub>　→　2 CuO",
                     "Cu　+　O<sub>2</sub>　→　CuO"
                 ],
-                "answer": 0,
-                "explanation": "銅（Cu）と酸素（O<sub>2</sub>）が結びついて酸化銅（CuO）ができる。矢印の左右 に化学式（かがくしき）をかくだけでは，原子（げんし）の数がそろわない。よって，酸素原子の数を そろえるために酸化銅の左側に大きく2 を書く。次に，銅原子の数をそろえ るために，銅を表すCu の左側に大きく2 を書く。"
+                "answer": 2,
+                "explanation": "銅の酸化の化学反応式は 2Cu + O2 → 2CuO である。"
             },
             {
                 "id": 45,
@@ -878,8 +886,8 @@ window.app = {
                     "2 H<sub>2</sub>　+　2 O<sub>2</sub>　→　2 H<sub>2</sub> O",
                     "H<sub>2</sub>　+　2 O<sub>2</sub>　→　2 H<sub>2</sub> O"
                 ],
-                "answer": 0,
-                "explanation": "水素（H<sub>2</sub>）と酸素（O<sub>2</sub>）から水（H<sub>2</sub>O）ができる。この反応は水の電気分 解と逆の反応である。矢印の左右に化学式（かがくしき）をかくだけでは，原子（げんし）の数がそろ わない。よって，酸素原子の数をそろえるために水分子の数を2 個にする。 次に，水素原子の数をそろえるために水素分子の数を2 個にする。"
+                "answer": 2,
+                "explanation": "水素の燃焼（水の合成）の化学反応式は 2H2 + O2 → 2H2O である。"
             },
             {
                 "id": 46,
@@ -893,7 +901,7 @@ window.app = {
                     "二酸化炭素"
                 ],
                 "answer": 0,
-                "explanation": "空気中で鉄を燃やすと，鉄が空気中の酸素と結びついて酸化鉄（さんかてつ）ができる。"
+                "explanation": "スチールウール（鉄）を加熱すると、酸素と結びついて酸化鉄ができる。"
             },
             {
                 "id": 47,
@@ -906,7 +914,7 @@ window.app = {
                     "変わらない"
                 ],
                 "answer": 1,
-                "explanation": "鉄を燃やすと酸素と結びつくため，その分質量は増える。"
+                "explanation": "結びついた酸素の分だけ、酸化鉄の質量は燃やす前より増える。"
             },
             {
                 "id": 48,
@@ -918,7 +926,7 @@ window.app = {
                     "いえる"
                 ],
                 "answer": 0,
-                "explanation": "空気中でマグネシウムを燃やしてできた酸化（さんか）マグネシウムや，鉄を燃やして できた酸化鉄（さんかてつ）は，それぞれ燃やす前とは異なる物質で，燃やす前の性質をもっ ていない。例えば，鉄に塩酸を加えると水素が発生するが，酸化鉄に塩酸を 加えても水素は発生しないなど，酸化鉄は鉄の性質をもっていない。それ以 外にも酸化鉄は電気を通さない，金属光沢がないなど，鉄とは性質が異なる。"
+                "explanation": "化学変化によって別の物質になっているため、もとの性質はもっていない。"
             },
             {
                 "id": 49,
@@ -931,7 +939,7 @@ window.app = {
                     "硫化"
                 ],
                 "answer": 0,
-                "explanation": "物質が酸素と結びつく化学変化を酸化（さんか）という。"
+                "explanation": "物質が酸素と結びつく化学変化を酸化という。"
             },
             {
                 "id": 50,
@@ -944,7 +952,7 @@ window.app = {
                     "分解"
                 ],
                 "answer": 1,
-                "explanation": "光や熱を出す激しい酸化（酸素と結びつく化学反応）を燃焼（ねんしょう）という。"
+                "explanation": "光や熱を出しながら激しく進む酸化を燃焼という。"
             },
             {
                 "id": 51,
@@ -958,7 +966,7 @@ window.app = {
                     "酸化銅"
                 ],
                 "answer": 0,
-                "explanation": "マグネシウムは空気中で火をつけると熱や光を出しながら燃焼し，白色の酸 化マグネシウムになる。"
+                "explanation": "マグネシウムを空気中で加熱すると、酸化マグネシウムができる。"
             },
             {
                 "id": 52,
@@ -971,8 +979,8 @@ window.app = {
                     "二酸化炭素，酸素",
                     "二酸化炭素，水"
                 ],
-                "answer": 0,
-                "explanation": "鉄と硫黄の混合物を加熱してできた硫化鉄（りゅうかてつ）は黒色である。"
+                "answer": 3,
+                "explanation": "有機物（炭素と水素を含む）を燃やすと、二酸化炭素と水ができる。"
             }
         ]
             },
@@ -1003,10 +1011,16 @@ window.app = {
     startQuiz(isLoaded = false) {
         this.state.isTeacherMode = false;
         if (!isLoaded) {
-            this.state.studentClass = this.elements.studentClassInput.value;
-            this.state.studentId = this.elements.studentIdInput.value;
-            this.state.studentName = this.elements.studentNameInput.value;
-            if (!this.state.studentClass || !this.state.studentId || !this.state.studentName) {
+    this.state.studentClass = this.elements.studentClassInput.value;
+    this.state.studentId = this.elements.studentIdInput.value;
+    this.state.studentName = this.elements.studentNameInput.value;
+    
+    const limitVal = this.elements.questionLimitSelect.value;
+    this.state.questionLimit = limitVal === 'all' ? Infinity : parseInt(limitVal, 10);
+    this.state.questionCount = 0;
+    
+    if (!this.state.studentClass || !this.state.studentId || !this.state.studentName) {
+
                 alert('クラス、出席番号、名前を入力してください。');
                 return;
             }
@@ -1474,14 +1488,23 @@ window.app = {
 
     // Advance to the next question/topic
     advance(success) {
-        if (success) {
-            const topicName = this.data.topics[this.state.currentTopicIndex];
-            this.state.reportData[topicName].completedGroups++;
-            this.state.currentGroupIndex++;
+    if (success) {
+        const topicName = this.data.topics[this.state.currentTopicIndex];
+        this.state.reportData[topicName].completedGroups++;
+        this.state.currentGroupIndex++;
+    }
+    
+    if (!this.state.isTeacherMode) {
+        this.state.questionCount++;
+        if (this.state.questionCount >= this.state.questionLimit) {
+            alert('設定した問題数に到達しました。お疲れ様でした！');
+            this.generateReport();
+            return;
         }
-        
-        this.loadQuestion();
-    },
+    }
+    
+    this.loadQuestion();
+},
 
     // Review Mode Logic
     startReview() {
