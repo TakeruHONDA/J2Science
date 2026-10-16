@@ -136,10 +136,12 @@
    	        <input type="text" id="student-class-input" placeholder="クラス (例: A)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-id-input" placeholder="出席番号" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="text" id="student-name-input" placeholder="名前" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-<select id="question-limit-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+		<select id="question-limit-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+<!--
     <option value="10">10問だけ解く</option>
     <option value="20">20問だけ解く</option>
     <option value="30">30問だけ解く</option>
+-->
     <option value="all">全問（52問）解く</option>
 </select>
 
@@ -705,8 +707,8 @@ window.app = {
                     "A",
                     "B"
                 ],
-                "answer": 0,
-                "explanation": "反応前の混合物（A）には鉄が含まれているため、磁石に引きつけられる。"
+                "answer": 1,
+                "explanation": "加熱して反応させたA（硫化鉄）は鉄の性質をもたないため磁石につかず、加熱前の混合物であるB（鉄と硫黄の混合物）が磁石に引きつけられる。"
             },
             {
                 "id": 33,
@@ -717,8 +719,8 @@ window.app = {
                     "A",
                     "B"
                 ],
-                "answer": 1,
-                "explanation": "反応後の硫化鉄（B）に塩酸をかけると、特有のにおいのある硫化水素が発生する。"
+                "answer": 0,
+                "explanation": "加熱して反応させたA（硫化鉄）にうすい塩酸をかけると、腐卵臭（刺激臭）のある有害な気体である硫化水素が発生する。（加熱前のBからは無臭の水素が発生する。）"
             },
             {
                 "id": 34,
